@@ -39,7 +39,7 @@
 
 
                                     <td>
-                                        <a href="<?= base_url() ?>super_admin/edit_designation/<?= $row->dsgn_id ?>" class="btn btn-warning text-dark">
+                                        <a class="btn btn-warning text-dark ml-2 edit_designation_modal" data-id="<?= $row->dsgn_id ?>">
                                             <i class="fas fa-edit"></i> Edit
                                         </a>
                                         <?php

@@ -5,5 +5,6 @@ include "inc/top_bar.php";
 include "inc/employment_type_content.php";
 include "inc/footer.php";
 include "inc/footer_js.php";
-include "inc/modal/create_new_employment_type.php"; 
+include "inc/modal/create_new_employment_type.php";
+include "inc/modal/edit_employment_type.php";
 ?>

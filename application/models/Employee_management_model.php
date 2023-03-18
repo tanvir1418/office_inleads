@@ -585,6 +585,32 @@ class Employee_management_model  extends CI_Model {
         $this->db->update('department_list', $data_dept);
         redirect("super_admin/department_list");
     }
+
+    function edit_department() {
+        $page_name = $this->uri->segment(3);
+        $this->form_validation->set_rules("dept_name", "dept_name", "xss_clean");
+        if ($this->form_validation->run() == FALSE) {
+            echo  $this->upload->display_errors();
+            $this->load->view('super_admin/department_list');
+        } else {
+            $dept_id = $this->input->post('dept_id');
+            $data_dept = array(
+                'dept_name' => $this->input->post('dept_name'),
+                'updated_at' => date('Y-m-d')
+            );
+            $this->db->where('dept_id', $dept_id);
+            $this->db->update('department_list', $data_dept);
+            redirect("super_admin/$page_name");
+        }
+        redirect("super_admin/department_list");
+    }
+
+    function get_single_department($dept_id) {
+        $this->db->order_by("created_at", "DESC");
+        $this->db->where('dept_id', $dept_id);
+        $query = $this->db->get("department_list");
+        return $query->result();
+    }
     // Department Model Ends
 
     // Designation Model Starts
@@ -635,6 +661,32 @@ class Employee_management_model  extends CI_Model {
         $this->db->where('dsgn_id', $dsgn_id);
         $this->db->update('designation_list', $data_dsgn);
         redirect("super_admin/designation_list");
+    }
+
+    function edit_designation() {
+        $page_name = $this->uri->segment(3);
+        $this->form_validation->set_rules("dsgn_name", "dsgn_name", "xss_clean");
+        if ($this->form_validation->run() == FALSE) {
+            echo  $this->upload->display_errors();
+            $this->load->view('super_admin/designation_list');
+        } else {
+            $dsgn_id = $this->input->post('dsgn_id');
+            $data_dept = array(
+                'dsgn_name' => $this->input->post('dsgn_name'),
+                'updated_at' => date('Y-m-d')
+            );
+            $this->db->where('dsgn_id', $dsgn_id);
+            $this->db->update('designation_list', $data_dept);
+            redirect("super_admin/$page_name");
+        }
+        redirect("super_admin/designation_list");
+    }
+
+    function get_single_designation($dsgn_id) {
+        $this->db->order_by("created_at", "DESC");
+        $this->db->where('dsgn_id', $dsgn_id);
+        $query = $this->db->get("designation_list");
+        return $query->result();
     }
     // Designation Model Ends
 
@@ -687,6 +739,33 @@ class Employee_management_model  extends CI_Model {
         $this->db->update('employment_type_list', $data_empl);
         redirect("super_admin/employment_type");
     }
+
+    function edit_employment_type() {
+        $page_name = $this->uri->segment(3);
+        $this->form_validation->set_rules("empl_name", "empl_name", "xss_clean");
+        if ($this->form_validation->run() == FALSE) {
+            echo  $this->upload->display_errors();
+            $this->load->view('super_admin/employment_type');
+        } else {
+            $empl_id = $this->input->post('empl_id');
+            $data_empl = array(
+                'empl_name' => $this->input->post('empl_name'),
+                'updated_at' => date('Y-m-d')
+            );
+            $this->db->where('empl_id', $empl_id);
+            $this->db->update('employment_type_list', $data_empl);
+            redirect("super_admin/$page_name");
+        }
+        redirect("super_admin/employment_type");
+    }
+
+    function get_single_employment_type($empl_id) {
+        $this->db->order_by("created_at", "DESC");
+        $this->db->where('empl_id', $empl_id);
+        $query = $this->db->get("employment_type_list");
+        return $query->result();
+    }
+    
     // Employment Type Model Ends
 
     // ID-Card Type Model Starts

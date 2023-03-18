@@ -102,6 +102,24 @@ class Super_admin extends CI_Controller {
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->deactive_department();
     }
+
+    public function edit_modal_department_ajx(){
+        $this->load->library('session');
+        $this->load->model('Employee_management_model', 'emm');
+        $dept_id = $this->input->post('dept_id');
+
+        foreach ($this->emm->get_single_department($dept_id) as $row) {
+            echo "<input type='hidden' name='dept_id' value='$row->dept_id'>
+            <label for='dept_name' class='control-label'>Id-Card Type</label>
+            <input type='text' class='form-control' id='dept_name' name='dept_name' value='$row->dept_name' required>";
+        }
+    }
+
+    public function edit_department() {
+        $this->load->library('session');
+        $this->load->model('Employee_management_model', 'emm');
+        $this->emm->edit_department();
+    }
     // Department Types Ends
 
 
@@ -128,6 +146,24 @@ class Super_admin extends CI_Controller {
         $this->load->library('session');
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->deactive_designation();
+    }
+
+    public function edit_modal_designation_ajx(){
+        $this->load->library('session');
+        $this->load->model('Employee_management_model', 'emm');
+        $dsgn_id = $this->input->post('dsgn_id');
+
+        foreach ($this->emm->get_single_designation($dsgn_id) as $row) {
+            echo "<input type='hidden' name='dsgn_id' value='$row->dsgn_id'>
+            <label for='dsgn_name' class='control-label'>Id-Card Type</label>
+            <input type='text' class='form-control' id='dsgn_name' name='dsgn_name' value='$row->dsgn_name' required>";
+        }
+    }
+
+    public function edit_designation() {
+        $this->load->library('session');
+        $this->load->model('Employee_management_model', 'emm');
+        $this->emm->edit_designation();
     }
     // Designation Types Ends
 
@@ -199,6 +235,24 @@ class Super_admin extends CI_Controller {
         $this->load->library('session');
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->deactive_employment_type();
+    }
+
+    public function edit_modal_employment_type_ajx(){
+        $this->load->library('session');
+        $this->load->model('Employee_management_model', 'emm');
+        $empl_id = $this->input->post('empl_id');
+
+        foreach ($this->emm->get_single_employment_type($empl_id) as $row) {
+            echo "<input type='hidden' name='empl_id' value='$row->empl_id'>
+            <label for='empl_name' class='control-label'>Id-Card Type</label>
+            <input type='text' class='form-control' id='empl_name' name='empl_name' value='$row->empl_name' required>";
+        }
+    }
+
+    public function edit_employment_type() {
+        $this->load->library('session');
+        $this->load->model('Employee_management_model', 'emm');
+        $this->emm->edit_employment_type();
     }
     // Employment Type Ends
 

@@ -1,0 +1,37 @@
+.row-wrapper{
+    margin-top: 80px;
+}
+
+.underline-class{
+    font-size: 80px;
+    text-decoration: underline !important;
+}
+
+.disable-entry{
+    /* background-color:grey; */
+    background-color:#9f9d9d54;
+    /* color : #C0C0C0; */
+    opacity : 0.5;
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+#employee-full-details .table td,
+#employee-full-details .table th{
+    padding: 0.15rem 0.5rem !important;
+}
+
+.text-success-imp {
+    color: #28a745!important;
+}
+
+.btn-success-imp {
+    background: #28a745!important;
+    border: none;
+    outline: none;
+}
+
+.btn-success-imp:hover {
+    border: none;
+    outline: none;
+}

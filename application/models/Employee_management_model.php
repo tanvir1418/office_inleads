@@ -8,14 +8,14 @@ class Employee_management_model  extends CI_Model {
         $this->load->library("form_validation");
 
         $this->form_validation->set_rules("employee_name", "employee_name", "xss_clean");
-        $this->form_validation->set_rules("designation", "designation", "xss_clean");
-        $this->form_validation->set_rules("pre_emp_id", "pre_emp_id", "xss_clean");
+        $this->form_validation->set_rules("dsgn_id", "dsgn_id", "xss_clean");
+        $this->form_validation->set_rules("idcard_id", "idcard_id", "xss_clean");
         $this->form_validation->set_rules("employee_id", "employee_id", "xss_clean");
         $this->form_validation->set_rules("division", "division", "xss_clean");
         $this->form_validation->set_rules("date_of_joining", "date_of_joining", "xss_clean");
-        $this->form_validation->set_rules("department", "department", "xss_clean");
+        $this->form_validation->set_rules("dept_id", "dept_id", "xss_clean");
         $this->form_validation->set_rules("location", "location", "xss_clean");
-        $this->form_validation->set_rules("employment_type", "employment_type", "xss_clean");
+        $this->form_validation->set_rules("empl_id", "empl_id", "xss_clean");
         $this->form_validation->set_rules("image", "image", "xss_clean");
         $this->form_validation->set_rules("father_name", "father_name", "xss_clean");
         $this->form_validation->set_rules("mother_name", "mother_name", "xss_clean");
@@ -107,14 +107,14 @@ class Employee_management_model  extends CI_Model {
             $data_employee = array(
                 'emp_user_id' => $emp_user_id,
                 'employee_name' => $this->input->post('employee_name'),
-                'designation' => $this->input->post('designation'),
-                'pre_emp_id' => $this->input->post('pre_emp_id'),
+                'dsgn_id' => $this->input->post('dsgn_id'),
+                'idcard_id' => $this->input->post('idcard_id'),
                 'employee_id' => $this->input->post('employee_id'),
                 'division' => $this->input->post('division'),
                 'date_of_joining' => $this->input->post('date_of_joining'),
-                'department' => $this->input->post('department'),
+                'dept_id' => $this->input->post('dept_id'),
                 'location' => $this->input->post('location'),
-                'employment_type' => $this->input->post('employment_type'),
+                'empl_id' => $this->input->post('empl_id'),
                 'image' => $image,
                 'status' => 'WORKING',
                 'created_at' => date('Y-m-d'),
@@ -354,14 +354,14 @@ class Employee_management_model  extends CI_Model {
     }
 
     function get_working_employees() {
-        $this->db->order_by("pre_emp_id", "DESC");
+        $this->db->order_by("idcard_id", "DESC");
         $this->db->where("status", "WORKING");
         $query = $this->db->get("employee_info");
         return $query->result();
     }
 
     function get_previous_employees() {
-        $this->db->order_by("pre_emp_id", "DESC");
+        $this->db->order_by("idcard_id", "DESC");
         $this->db->where("status", "DEPARTED");
         $query = $this->db->get("employee_info");
         return $query->result();
@@ -449,36 +449,31 @@ class Employee_management_model  extends CI_Model {
         return $query->result();
     }
 
-    function update_registration() {
-
-        $reg_id = $this->input->post('id');
+    function update_employee_details() {
 
         $this->load->library("form_validation");
-        $this->load->library("form_validation");
-        $this->form_validation->set_rules("full_name", "full_name", "xss_clean");
-        $this->form_validation->set_rules("father_name", "father_name", "xss_clean");
-        $this->form_validation->set_rules("mother_name", "mother_name", "xss_clean");
-        $this->form_validation->set_rules("db_day", "db_day", "xss_clean");
-        $this->form_validation->set_rules("db_month", "db_month", "xss_clean");
-        $this->form_validation->set_rules("db_year", "db_year", "xss_clean");
-        $this->form_validation->set_rules("ssc_year", "ssc_year", "xss_clean");
-        $this->form_validation->set_rules("ocopation", "adverect Description", "xss_clean");
-        $this->form_validation->set_rules("ocopation_details", "ocopation_details", "xss_clean");
-        $this->form_validation->set_rules("mobile_no", "mobile", "xss_clean");
-        $this->form_validation->set_rules("email", "email", "xss_clean");
-        $this->form_validation->set_rules("present_add", "present_add", "xss_clean");
-        $this->form_validation->set_rules("permanent_add", "permanent_add", "xss_clean");
-        $this->form_validation->set_rules("pay_mobile", "pay_mobile", "xss_clean");
-        $this->form_validation->set_rules("tranx_id", "tranx_id", "xss_clean");
-
+        $this->form_validation->set_rules("emp_user_id", "emp_user_id", "xss_clean");
+        $this->form_validation->set_rules("employee_name", "employee_name", "xss_clean");
+        $this->form_validation->set_rules("dsgn_id", "dsgn_id", "xss_clean");
+        $this->form_validation->set_rules("idcard_id", "idcard_id", "xss_clean");
+        $this->form_validation->set_rules("employee_id", "employee_id", "xss_clean");
+        $this->form_validation->set_rules("division", "division", "xss_clean");
+        $this->form_validation->set_rules("date_of_joining", "date_of_joining", "xss_clean");
+        $this->form_validation->set_rules("dept_id", "dept_id", "xss_clean");
+        $this->form_validation->set_rules("location", "location", "xss_clean");
+        $this->form_validation->set_rules("empl_id", "empl_id", "xss_clean");
         $this->form_validation->set_rules("image", "image", "xss_clean");
 
+        $emp_user_id = $this->input->post('emp_user_id');
 
         if ($this->form_validation->run() == FALSE) {
             echo  $this->upload->display_errors();
-            $this->load->view('super_admin/includes/new_adverect');
+            $this->load->view("super_admin/employee_edit_details/$emp_user_id");
         } else {
+
+            $prev_image = $this->input->post('prev_image');
             $image = $_FILES['image']['name'];
+
             if ($image != "") {
                 $image = random_string('alnum', 10) . '.jpg';
                 //insert image
@@ -487,52 +482,98 @@ class Employee_management_model  extends CI_Model {
                 $config['allowed_types'] = 'gif|jpg|jpeg|png';
                 $config['max_size']         = '100000';
                 $config['encrypt_name']     = false;
-
+                $config['image_library'] = 'gd2';
                 $this->load->library('upload', $config);
                 $this->upload->initialize($config);
                 $this->upload->do_upload('image');
-
-                $file_data = $this->upload->data();
+                $this->upload->data();
             } else {
-                $image = $this->input->post('image');
+                $image = $prev_image;
             }
 
-            //insert data to database
-
-            $data = array(
-
-                'full_name'         => $this->input->post('full_name'),
-                'name_bng'             => $this->input->post('name_bng'),
-                'blood_group'         => $this->input->post('blood_group'),
-                'update_date'         => date('Y-m-d H:i:s'),
-                'father_name'        => $this->input->post('father_name'),
-                'mother_name'        => $this->input->post('mother_name'),
-                'mobile_no'         => $this->input->post('mobile_no'),
-                'email'             => $this->input->post('email'),
-
-                'db_day'             => $this->input->post('db_day'),
-                'db_month'             => $this->input->post('db_month'),
-                'db_year'             => $this->input->post('db_year'),
-                'ssc_year'             => $this->input->post('ssc_year'),
-                'ocopation'         => $this->input->post('ocopation'),
-                'ocopation_details' => $this->input->post('ocopation_details'),
-                'present_add'         => $this->input->post('present_add'),
-                'permanent_add'     => $this->input->post('permanent_add'),
-                'gender'             => $this->input->post('gender'),
-                'tshirt'             => $this->input->post('tshirt'),
-                'payment'             => $this->input->post('payment'),
-                'pay_mobile'         => $this->input->post('pay_mobile'),
-                'tranx_id'             => $this->input->post('tranx_id'),
-                'status'             => $this->input->post('status'),
-                'image'             => $image
-
-
-
+            $data_employee = array(
+                'employee_name' => $this->input->post('employee_name'),
+                'dsgn_id' => $this->input->post('dsgn_id'),
+                'idcard_id' => $this->input->post('idcard_id'),
+                'employee_id' => $this->input->post('employee_id'),
+                'division' => $this->input->post('division'),
+                'date_of_joining' => $this->input->post('date_of_joining'),
+                'dept_id' => $this->input->post('dept_id'),
+                'location' => $this->input->post('location'),
+                'empl_id' => $this->input->post('empl_id'),
+                'image' => $image,
+                'status' => 'WORKING',
+                'created_at' => date('Y-m-d'),
+                'updated_at' => date('Y-m-d')
             );
 
-            $this->db->where('id', $reg_id);
-            $this->db->update('registration', $data);
-            redirect("admin/all_registerd");
+            $this->db->where('emp_user_id', $emp_user_id);
+            $this->db->update('employee_info', $data_employee);
+
+            if ($image != $prev_image) {
+                unlink(FCPATH . 'uploads/photos/' . $prev_image);
+            }
+
+            redirect("super_admin/employee_edit_details/$emp_user_id");
+        }
+    }
+
+    function update_personal_details() {
+
+        $this->load->library("form_validation");
+        $this->form_validation->set_rules("father_name", "father_name", "xss_clean");
+        $this->form_validation->set_rules("mother_name", "mother_name", "xss_clean");
+        $this->form_validation->set_rules("date_of_birth", "date_of_birth", "xss_clean");
+        $this->form_validation->set_rules("place_of_birth", "place_of_birth", "xss_clean");
+        $this->form_validation->set_rules("gender", "gender", "xss_clean");
+        $this->form_validation->set_rules("religion", "religion", "xss_clean");
+        $this->form_validation->set_rules("tin_no", "tin_no", "xss_clean");
+        $this->form_validation->set_rules("nationality", "nationality", "xss_clean");
+        $this->form_validation->set_rules("blood_group", "blood_group", "xss_clean");
+        $this->form_validation->set_rules("marital_status", "marital_status", "xss_clean");
+        $this->form_validation->set_rules("passport_no", "passport_no", "xss_clean");
+        $this->form_validation->set_rules("marriage_date", "marriage_date", "xss_clean");
+        $this->form_validation->set_rules("nid_no", "nid_no", "xss_clean");
+        $this->form_validation->set_rules("spouse_name", "spouse_name", "xss_clean");
+        $this->form_validation->set_rules("email", "email", "xss_clean");
+        $this->form_validation->set_rules("mobile", "mobile", "xss_clean");
+        $this->form_validation->set_rules("present_address", "present_address", "xss_clean");
+        $this->form_validation->set_rules("permanent_address", "permanent_address", "xss_clean");
+        $this->form_validation->set_rules("extra_curricular", "extra_curricular", "xss_clean");
+
+        $emp_user_id = $this->input->post('emp_user_id');
+
+        if ($this->form_validation->run() == FALSE) {
+            echo  $this->upload->display_errors();
+            $this->load->view("super_admin/employee_edit_details/$emp_user_id");
+        } else {
+
+            $data_personal = array(
+                'father_name' => $this->input->post('father_name'),
+                'mother_name' => $this->input->post('mother_name'),
+                'date_of_birth' => $this->input->post('date_of_birth'),
+                'place_of_birth' => $this->input->post('place_of_birth'),
+                'gender' => $this->input->post('gender'),
+                'religion' => $this->input->post('religion'),
+                'tin_no' => $this->input->post('tin_no'),
+                'nationality' => $this->input->post('nationality'),
+                'blood_group' => $this->input->post('blood_group'),
+                'marital_status' => $this->input->post('marital_status'),
+                'passport_no' => $this->input->post('passport_no'),
+                'marriage_date' => $this->input->post('marriage_date'),
+                'nid_no' => $this->input->post('nid_no'),
+                'spouse_name' => $this->input->post('spouse_name'),
+                'mobile' => $this->input->post('mobile'),
+                'email' => $this->input->post('email'),
+                'present_address' => $this->input->post('present_address'),
+                'permanent_address' => $this->input->post('permanent_address'),
+                'extra_curricular' => $this->input->post('extra_curricular'),
+            );
+
+            $this->db->where('emp_user_id', $emp_user_id);
+            $this->db->update('emp_personal_info', $data_personal);
+
+            redirect("super_admin/employee_edit_details/$emp_user_id");
         }
     }
 
@@ -540,6 +581,13 @@ class Employee_management_model  extends CI_Model {
     function get_department_list() {
         $this->db->order_by("created_at", "DESC");
         $query = $this->db->get("department_list");
+        return $query->result();
+    }
+
+    function get_active_department_list() {
+        $this->db->order_by('created_at', 'DESC');
+        $this->db->where('status', 'ACTIVE');
+        $query = $this->db->get('department_list');
         return $query->result();
     }
 
@@ -620,6 +668,13 @@ class Employee_management_model  extends CI_Model {
         return $query->result();
     }
 
+    function get_active_designation_list() {
+        $this->db->order_by('created_at', 'DESC');
+        $this->db->where('status', 'ACTIVE');
+        $query = $this->db->get('designation_list');
+        return $query->result();
+    }
+
     function create_new_designation() {
         $page_name = $this->uri->segment(3);
         $this->form_validation->set_rules("dsgn_name", "dsgn_name", "xss_clean");
@@ -697,6 +752,13 @@ class Employee_management_model  extends CI_Model {
         return $query->result();
     }
 
+    function get_active_employment_type_list() {
+        $this->db->order_by('created_at', 'DESC');
+        $this->db->where('status', 'ACTIVE');
+        $query = $this->db->get('employment_type_list');
+        return $query->result();
+    }
+
     function create_new_employment_type() {
         $page_name = $this->uri->segment(3);
         $this->form_validation->set_rules("empl_name", "empl_name", "xss_clean");
@@ -765,13 +827,20 @@ class Employee_management_model  extends CI_Model {
         $query = $this->db->get("employment_type_list");
         return $query->result();
     }
-    
+
     // Employment Type Model Ends
 
     // ID-Card Type Model Starts
     function get_idcard_type_list() {
         $this->db->order_by("created_at", "DESC");
         $query = $this->db->get("idcard_type_list");
+        return $query->result();
+    }
+
+    function get_active_idcard_type_list() {
+        $this->db->order_by('created_at', 'DESC');
+        $this->db->where('status', 'ACTIVE');
+        $query = $this->db->get('idcard_type_list');
         return $query->result();
     }
 
@@ -849,6 +918,13 @@ class Employee_management_model  extends CI_Model {
     function get_salary_type_list() {
         $this->db->order_by("created_at", "DESC");
         $query = $this->db->get("salary_type_list");
+        return $query->result();
+    }
+
+    function get_active_salary_type_list() {
+        $this->db->order_by('created_at', 'DESC');
+        $this->db->where('status', 'ACTIVE');
+        $query = $this->db->get('salary_type_list');
         return $query->result();
     }
 

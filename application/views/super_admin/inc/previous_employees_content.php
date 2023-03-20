@@ -28,9 +28,23 @@
                                             <?= $row->employee_name ?>
                                         </a>
                                     </td>
-                                    <td><?= $row->designation ?></td>
-                                    <td><?= $row->department ?></td>
-                                    <td><?= $row->pre_emp_id ?>-<?= $row->employee_id ?></td>
+                                    <?php
+                                        $this->db->where('dsgn_id', $row->dsgn_id);
+                                        $designation = $this->db->get("designation_list")->row('dsgn_name');
+                                    ?>
+                                    <td><?= $designation ?></td>
+                                    
+                                    <?php    
+                                        $this->db->where('dept_id', $row->dept_id);
+                                        $department = $this->db->get("department_list")->row('dept_name');
+                                    ?>
+                                    <td><?= $department ?></td>
+
+                                    <?php
+                                        $this->db->where('idcard_id', $row->idcard_id);
+                                        $pre_idcard = $this->db->get("idcard_type_list")->row('idcard_name');
+                                    ?>
+                                    <td><?= $pre_idcard ?>-<?= $row->employee_id ?></td>
                                     <td><?= implode("-", array_reverse(explode("-", $row->date_of_joining))) ?></td>
                                 </tr>
                             <?php endforeach; ?>

@@ -24,7 +24,11 @@
                         <div class="text-center">
                             <?php foreach ($this->emm->get_employee_details_by_userid() as $rowEmp) : ?>
                                 <h5 class="mt-2 mb-0"><?= $rowEmp->employee_name ?></h5>
-                                <small class="text-muted"><?= $rowEmp->designation ?></small>
+                                <?php
+                                    $this->db->where('dsgn_id', $rowEmp->dsgn_id);
+                                    $designation = $this->db->get("designation_list")->row('dsgn_name');
+                                ?>
+                                <small class="text-muted"><?= $designation ?></small>
                                 <p class="text-muted mb-2 p-2">
                                     <a href="#">
                                         <img src="<?= base_url() ?>uploads/photos/<?= $rowEmp->image ?>" alt="" class="img-fluid rounded-circle w-80">
@@ -100,12 +104,28 @@
                                             <?php foreach ($this->emm->get_employee_details_by_userid() as $rowEmp2) : ?>
                                                 <ul>
                                                     <li><b>Name:</b> <?= $rowEmp2->employee_name ?></li>
-                                                    <li><b>Designation:</b> <?= $rowEmp2->designation ?></li>
-                                                    <li><b>Id Card:</b> <?= $rowEmp2->pre_emp_id ?>-<?= $rowEmp2->employee_id ?></li>
+                                                    <?php
+                                                        $this->db->where('dsgn_id', $rowEmp2->dsgn_id);
+                                                        $designation = $this->db->get("designation_list")->row('dsgn_name');
+                                                    ?>
+                                                    <li><b>Designation:</b> <?= $designation ?></li>
+                                                    <?php
+                                                        $this->db->where('idcard_id', $rowEmp2->idcard_id);
+                                                        $pre_idcard = $this->db->get("idcard_type_list")->row('idcard_name');
+                                                    ?>
+                                                    <li><b>Id Card:</b> <?= $pre_idcard ?>-<?= $rowEmp2->employee_id ?></li>
                                                     <li><b>Joining Date:</b> <?= implode("-", array_reverse(explode("-", $rowEmp2->date_of_joining))) ?></li>
-                                                    <li><b>Department:</b> <?= $rowEmp2->department ?></li>
+                                                    <?php    
+                                                        $this->db->where('dept_id', $rowEmp2->dept_id);
+                                                        $department = $this->db->get("department_list")->row('dept_name');
+                                                    ?>
+                                                    <li><b>Department:</b> <?= $department ?></li>
                                                     <li><b>Location:</b> <?= $rowEmp2->location ?></li>
-                                                    <li><b>Employment Type:</b> <?= $rowEmp2->employment_type ?></li>
+                                                    <?php    
+                                                        $this->db->where('empl_id', $rowEmp2->empl_id);
+                                                        $employment_type = $this->db->get("employment_type_list")->row('empl_name');
+                                                    ?>
+                                                    <li><b>Employment Type:</b> <?= $employment_type ?></li>
                                                     <li><b>Status:</b> <?= $rowEmp2->status ?></li>
                                                     <li><b>Account Created:</b> <?= implode("-", array_reverse(explode("-", $rowEmp2->created_at))) ?></li>
                                                 </ul>

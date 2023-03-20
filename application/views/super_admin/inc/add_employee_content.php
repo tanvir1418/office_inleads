@@ -18,24 +18,23 @@
                         <input type="text" class="form-control" name="employee_name" id="employee_name" aria-describedby="employee_name" placeholder="Enter employee name" required>
                     </div>
                     <div class="form-group col-6">
-                        <label for="designation">Designation:</label>
-                        <select class="form-control" name="designation" id="designation" required>
+                        <label for="dsgn_id">Designation:</label>
+                        <select class="form-control" name="dsgn_id" id="dsgn_id" required>
                             <option value="" selected="" disabled="" hidden="">Choose here</option>
-                            <option value="Intern">Intern</option>
-                            <option value="Intern">Digital Marketer</option>
-                            <option value="Software Engineer">Software Engineer</option>
+                            <?php foreach ($this->emm->get_active_designation_list() as $row): ?>
+                                <option value="<?= $row->dsgn_id ?>"><?= $row->dsgn_name ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
                     <div class="form-group col-6">
                         <label for="employee_id">Employee ID:</label>
                         <div class="input-group mb-2">
                             <div class="input-group-prepend">
-                                <select class="form-control input-group-text text-left" name="pre_emp_id" required>
+                                <select class="form-control input-group-text text-left" name="idcard_id" required>
                                     <option value="" selected="" disabled="" hidden="">CHOOSE HERE</option>
-                                    <option value="DEV">DEV</option>
-                                    <option value="DESIGN">DESIGN</option>
-                                    <option value="MARKETING">MARKETING</option>
-                                    <option value="SEO">SEO</option>
+                                    <?php foreach ($this->emm->get_active_idcard_type_list() as $row): ?>
+                                        <option value="<?= $row->idcard_id ?>"><?= $row->idcard_name ?></option>
+                                    <?php endforeach; ?>
                                 </select>
                             </div>
                             <input type="text" class="form-control" name="employee_id" id="employee_id" placeholder="Enter employee id" required>
@@ -50,11 +49,12 @@
                         <input type="date" class="form-control" name="date_of_joining" id="date_of_joining" required>
                     </div>
                     <div class="form-group col-6">
-                        <label for="department">Department:</label>
-                        <select class="form-control" name="department" id="department" required>
+                        <label for="dept_id">Department:</label>
+                        <select class="form-control" name="dept_id" id="dept_id" required>
                             <option value="" selected="" disabled="" hidden="">Choose here</option>
-                            <option value="IT Section">IT Section</option>
-                            <option value="Career Development Zone">Career Development Zone</option>
+                            <?php foreach ($this->emm->get_active_department_list() as $row): ?>
+                                <option value="<?= $row->dept_id ?>"><?= $row->dept_name ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
                     <div class="form-group col-6">
@@ -62,12 +62,12 @@
                         <input type="text" class="form-control" name="location" id="location" aria-describedby="location" placeholder="Enter location" required>
                     </div>
                     <div class="form-group col-6">
-                        <label for="employment_type">Employment Type:</label>
-                        <select class="form-control" name="employment_type" id="employment_type" required>
+                        <label for="empl_id">Employment Type:</label>
+                        <select class="form-control" name="empl_id" id="empl_id" required>
                             <option value="" selected="" disabled="" hidden="">Choose here</option>
-                            <option value="Full Time">Full Time</option>
-                            <option value="Part Time">Part Time</option>
-                            <option value="Contract Based">Contract Based</option>
+                            <?php foreach ($this->emm->get_active_employment_type_list() as $row): ?>
+                                <option value="<?= $row->empl_id ?>"><?= $row->empl_name ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
                     <div class="form-group col-6">

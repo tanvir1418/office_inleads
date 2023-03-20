@@ -29,7 +29,11 @@
                                     </a>
                                 </p>
                                 <h5 class="mt-2 mb-0"><?= $rowEmp->employee_name ?></h5>
-                                <small class="text-muted"><?= $rowEmp->designation ?></small>
+                                <?php
+                                $this->db->where('dsgn_id', $rowEmp->dsgn_id);
+                                $designation = $this->db->get("designation_list")->row('dsgn_name');
+                                ?>
+                                <small class="text-muted"><?= $designation ?></small>
                                 <br>
                                 <a class="btn btn-dark text-white mt-2" href="<?= base_url() ?>super_admin/employee_profile/<?= $rowEmp->emp_user_id ?>">Profile</a>
                                 <a class="btn btn-warning text-white mt-2" href="<?= base_url() ?>super_admin/employee_edit_details/<?= $rowEmp->emp_user_id ?>">Edit Details</a>
@@ -46,15 +50,31 @@
                                 <div class="col-6 pt-2">
                                     <ul>
                                         <li><b>Name:</b> <?= $rowEmp2->employee_name ?></li>
-                                        <li><b>Designation:</b> <?= $rowEmp2->designation ?></li>
-                                        <li><b>Department:</b> <?= $rowEmp2->department ?></li>
+                                        <?php
+                                            $this->db->where('dsgn_id', $rowEmp2->dsgn_id);
+                                            $designation = $this->db->get("designation_list")->row('dsgn_name');
+                                        ?>
+                                        <li><b>Designation:</b> <?= $designation ?></li>
+                                        <?php
+                                            $this->db->where('dept_id', $rowEmp2->dept_id);
+                                            $department = $this->db->get("department_list")->row('dept_name');
+                                        ?>
+                                        <li><b>Department:</b> <?= $department ?></li>
                                         <li><b>Joining Date:</b> <?= implode("-", array_reverse(explode("-", $rowEmp2->date_of_joining))) ?></li>
-                                        <li><b>Id Card:</b> <?= $rowEmp2->pre_emp_id ?>-<?= $rowEmp2->employee_id ?></li>
+                                        <?php
+                                            $this->db->where('idcard_id', $rowEmp2->idcard_id);
+                                            $pre_idcard = $this->db->get("idcard_type_list")->row('idcard_name');
+                                        ?>
+                                        <li><b>Id Card:</b> <?= $pre_idcard ?>-<?= $rowEmp2->employee_id ?></li>
                                     </ul>
                                 </div>
                                 <div class="col-6 pt-2">
                                     <ul>
-                                        <li><b>Employment Type:</b> <?= $rowEmp2->employment_type ?></li>
+                                        <?php
+                                            $this->db->where('empl_id', $rowEmp2->empl_id);
+                                            $employment_type = $this->db->get("employment_type_list")->row('empl_name');
+                                        ?>
+                                        <li><b>Employment Type:</b> <?= $employment_type ?></li>
                                         <li><b>Status:</b> <?= $rowEmp2->status ?></li>
                                         <li><b>Location:</b> <?= $rowEmp2->location ?></li>
                                         <li><b>Account Created:</b> <?= implode("-", array_reverse(explode("-", $rowEmp2->created_at))) ?></li>
@@ -198,7 +218,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12 profile-detail">
@@ -367,7 +387,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12 profile-detail">

@@ -71,11 +71,17 @@ class Super_admin extends CI_Controller {
         $this->load->model('Employee_management_model', 'emm');
         $this->load->view('super_admin/employee_edit_details');
     }
-    
-    public function update_employee() {
+
+    public function update_employee_details() {
         $this->load->library('session');
         $this->load->model('Employee_management_model', 'emm');
-        $this->emm->update_employee();
+        $this->emm->update_employee_details();
+    }
+
+    public function update_personal_details() {
+        $this->load->library('session');
+        $this->load->model('Employee_management_model', 'emm');
+        $this->emm->update_personal_details();
     }
     
     // Department Types Starts

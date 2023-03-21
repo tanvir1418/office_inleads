@@ -607,6 +607,14 @@ class Employee_management_model  extends CI_Model {
         redirect("super_admin/employee_edit_details/$emp_user_id");
     }
 
+    function delete_employment_history() {
+        $emp_his_id = $this->uri->segment(3);
+        $previous_url = $_SERVER['HTTP_REFERER'];
+        $this->db->where('emp_his_id', $emp_his_id);
+        $this->db->delete('emp_employment_history');
+        redirect($previous_url);
+    }
+
     function update_academic_qualification() {
         $this->load->library("form_validation");
         $this->form_validation->set_rules("emp_user_id", "emp_user_id", "xss_clean");
@@ -641,6 +649,14 @@ class Employee_management_model  extends CI_Model {
         redirect("super_admin/employee_edit_details/$emp_user_id");
     }
 
+    function delete_academic_qualification() {
+        $emp_acad_id = $this->uri->segment(3);
+        $previous_url = $_SERVER['HTTP_REFERER'];
+        $this->db->where('emp_acad_id', $emp_acad_id);
+        $this->db->delete('emp_academic_qualification');
+        redirect($previous_url);
+    }
+
     function update_training_details() {
         $this->load->library("form_validation");
         $this->form_validation->set_rules("emp_user_id", "emp_user_id", "xss_clean");
@@ -671,6 +687,14 @@ class Employee_management_model  extends CI_Model {
             redirect("super_admin/employee_edit_details/$emp_user_id");
         }
         redirect("super_admin/employee_edit_details/$emp_user_id");
+    }
+
+    function delete_training_details() {
+        $emp_training_id = $this->uri->segment(3);
+        $previous_url = $_SERVER['HTTP_REFERER'];
+        $this->db->where('emp_training_id', $emp_training_id);
+        $this->db->delete('emp_training_details');
+        redirect($previous_url);
     }
 
     function update_prof_certification() {
@@ -707,6 +731,14 @@ class Employee_management_model  extends CI_Model {
         redirect("super_admin/employee_edit_details/$emp_user_id");
     }
 
+    function delete_prof_certification() {
+        $emp_cerf_id = $this->uri->segment(3);
+        $previous_url = $_SERVER['HTTP_REFERER'];
+        $this->db->where('emp_cerf_id', $emp_cerf_id);
+        $this->db->delete('emp_prof_certification');
+        redirect($previous_url);
+    }
+
     function update_emergency_contact() {
         $this->load->library("form_validation");
         $this->form_validation->set_rules("emp_user_id", "emp_user_id", "xss_clean");
@@ -737,6 +769,14 @@ class Employee_management_model  extends CI_Model {
             redirect("super_admin/employee_edit_details/$emp_user_id");
         }
         redirect("super_admin/employee_edit_details/$emp_user_id");
+    }
+
+    function delete_emergency_contact() {
+        $emp_emerg_id = $this->uri->segment(3);
+        $previous_url = $_SERVER['HTTP_REFERER'];
+        $this->db->where('emp_emerg_id', $emp_emerg_id);
+        $this->db->delete('emp_emergency_contact');
+        redirect($previous_url);
     }
 
     function update_reference() {
@@ -773,6 +813,14 @@ class Employee_management_model  extends CI_Model {
         redirect("super_admin/employee_edit_details/$emp_user_id");
     }
 
+    function delete_reference() {
+        $emp_ref_id = $this->uri->segment(3);
+        $previous_url = $_SERVER['HTTP_REFERER'];
+        $this->db->where('emp_ref_id', $emp_ref_id);
+        $this->db->delete('emp_reference');
+        redirect($previous_url);
+    }
+
     function update_children_details() {
         $this->load->library("form_validation");
         $this->form_validation->set_rules("emp_user_id", "emp_user_id", "xss_clean");
@@ -801,6 +849,14 @@ class Employee_management_model  extends CI_Model {
             redirect("super_admin/employee_edit_details/$emp_user_id");
         }
         redirect("super_admin/employee_edit_details/$emp_user_id");
+    }
+
+    function delete_children_details() {
+        $emp_child_id = $this->uri->segment(3);
+        $previous_url = $_SERVER['HTTP_REFERER'];
+        $this->db->where('emp_child_id', $emp_child_id);
+        $this->db->delete('emp_children_details');
+        redirect($previous_url);
     }
 
     function update_society_details() {
@@ -833,6 +889,14 @@ class Employee_management_model  extends CI_Model {
             redirect("super_admin/employee_edit_details/$emp_user_id");
         }
         redirect("super_admin/employee_edit_details/$emp_user_id");
+    }
+
+    function delete_society_details() {
+        $emp_soc_id = $this->uri->segment(3);
+        $previous_url = $_SERVER['HTTP_REFERER'];
+        $this->db->where('emp_soc_id', $emp_soc_id);
+        $this->db->delete('emp_society_member');
+        redirect($previous_url);
     }
 
     // Department Model Starts

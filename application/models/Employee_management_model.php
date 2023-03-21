@@ -450,7 +450,6 @@ class Employee_management_model  extends CI_Model {
     }
 
     function update_employee_details() {
-
         $this->load->library("form_validation");
         $this->form_validation->set_rules("emp_user_id", "emp_user_id", "xss_clean");
         $this->form_validation->set_rules("employee_name", "employee_name", "xss_clean");
@@ -519,7 +518,6 @@ class Employee_management_model  extends CI_Model {
     }
 
     function update_personal_details() {
-
         $this->load->library("form_validation");
         $this->form_validation->set_rules("father_name", "father_name", "xss_clean");
         $this->form_validation->set_rules("mother_name", "mother_name", "xss_clean");
@@ -575,6 +573,266 @@ class Employee_management_model  extends CI_Model {
 
             redirect("super_admin/employee_edit_details/$emp_user_id");
         }
+    }
+
+    function update_employment_history() {
+        $this->load->library("form_validation");
+        $this->form_validation->set_rules("emp_user_id", "emp_user_id", "xss_clean");
+        $this->form_validation->set_rules("organization", "organization", "xss_clean");
+        $this->form_validation->set_rules("designation", "designation", "xss_clean");
+        $this->form_validation->set_rules("start_date", "start_date", "xss_clean");
+        $this->form_validation->set_rules("end_date", "end_date", "xss_clean");
+
+        $emp_his_id = $this->uri->segment(3);
+
+        $emp_user_id = $this->input->post('emp_user_id');
+
+        if ($this->form_validation->run() == FALSE) {
+            echo  $this->upload->display_errors();
+            $this->load->view("super_admin/employee_edit_details/$emp_user_id");
+        } else {
+
+            $data_empl_history = array(
+                'organization' => $this->input->post('organization'),
+                'designation' => $this->input->post('designation'),
+                'start_date' => $this->input->post('start_date'),
+                'end_date' => $this->input->post('end_date'),
+            );
+
+            $this->db->where('emp_his_id', $emp_his_id);
+            $this->db->update('emp_employment_history', $data_empl_history);
+
+            redirect("super_admin/employee_edit_details/$emp_user_id");
+        }
+        redirect("super_admin/employee_edit_details/$emp_user_id");
+    }
+
+    function update_academic_qualification() {
+        $this->load->library("form_validation");
+        $this->form_validation->set_rules("emp_user_id", "emp_user_id", "xss_clean");
+        $this->form_validation->set_rules("degree", "degree", "xss_clean");
+        $this->form_validation->set_rules("institution", "institution", "xss_clean");
+        $this->form_validation->set_rules("subject", "subject", "xss_clean");
+        $this->form_validation->set_rules("result", "result", "xss_clean");
+        $this->form_validation->set_rules("completion", "completion", "xss_clean");
+
+        $emp_acad_id = $this->uri->segment(3);
+
+        $emp_user_id = $this->input->post('emp_user_id');
+
+        if ($this->form_validation->run() == FALSE) {
+            echo  $this->upload->display_errors();
+            $this->load->view("super_admin/employee_edit_details/$emp_user_id");
+        } else {
+
+            $data_academic_qual = array(
+                'degree' => $this->input->post('degree'),
+                'institution' => $this->input->post('institution'),
+                'subject' => $this->input->post('subject'),
+                'result' => $this->input->post('result'),
+                'completion' => $this->input->post('completion')
+            );
+
+            $this->db->where('emp_acad_id', $emp_acad_id);
+            $this->db->update('emp_academic_qualification', $data_academic_qual);
+
+            redirect("super_admin/employee_edit_details/$emp_user_id");
+        }
+        redirect("super_admin/employee_edit_details/$emp_user_id");
+    }
+
+    function update_training_details() {
+        $this->load->library("form_validation");
+        $this->form_validation->set_rules("emp_user_id", "emp_user_id", "xss_clean");
+        $this->form_validation->set_rules("title", "title", "xss_clean");
+        $this->form_validation->set_rules("institution", "institution", "xss_clean");
+        $this->form_validation->set_rules("start_date", "start_date", "xss_clean");
+        $this->form_validation->set_rules("end_date", "end_date", "xss_clean");
+
+        $emp_training_id = $this->uri->segment(3);
+
+        $emp_user_id = $this->input->post('emp_user_id');
+
+        if ($this->form_validation->run() == FALSE) {
+            echo  $this->upload->display_errors();
+            $this->load->view("super_admin/employee_edit_details/$emp_user_id");
+        } else {
+
+            $data_training = array(
+                'title' => $this->input->post('title'),
+                'institution' => $this->input->post('institution'),
+                'start_date' => $this->input->post('start_date'),
+                'end_date' => $this->input->post('end_date')
+            );
+
+            $this->db->where('emp_training_id', $emp_training_id);
+            $this->db->update('emp_training_details', $data_training);
+
+            redirect("super_admin/employee_edit_details/$emp_user_id");
+        }
+        redirect("super_admin/employee_edit_details/$emp_user_id");
+    }
+
+    function update_prof_certification() {
+        $this->load->library("form_validation");
+        $this->form_validation->set_rules("emp_user_id", "emp_user_id", "xss_clean");
+        $this->form_validation->set_rules("certificate", "certificate", "xss_clean");
+        $this->form_validation->set_rules("institution", "institution", "xss_clean");
+        $this->form_validation->set_rules("start_date", "start_date", "xss_clean");
+        $this->form_validation->set_rules("end_date", "end_date", "xss_clean");
+        $this->form_validation->set_rules("completion", "completion", "xss_clean");
+
+        $emp_cerf_id = $this->uri->segment(3);
+
+        $emp_user_id = $this->input->post('emp_user_id');
+
+        if ($this->form_validation->run() == FALSE) {
+            echo  $this->upload->display_errors();
+            $this->load->view("super_admin/employee_edit_details/$emp_user_id");
+        } else {
+
+            $data_certification = array(
+                'certificate' => $this->input->post('certificate'),
+                'institution' => $this->input->post('institution'),
+                'start_date' => $this->input->post('start_date'),
+                'end_date' => $this->input->post('end_date'),
+                'completion' => $this->input->post('completion')
+            );
+
+            $this->db->where('emp_cerf_id', $emp_cerf_id);
+            $this->db->update('emp_prof_certification', $data_certification);
+
+            redirect("super_admin/employee_edit_details/$emp_user_id");
+        }
+        redirect("super_admin/employee_edit_details/$emp_user_id");
+    }
+
+    function update_emergency_contact() {
+        $this->load->library("form_validation");
+        $this->form_validation->set_rules("emp_user_id", "emp_user_id", "xss_clean");
+        $this->form_validation->set_rules("name", "name", "xss_clean");
+        $this->form_validation->set_rules("relation", "relation", "xss_clean");
+        $this->form_validation->set_rules("mobile", "mobile", "xss_clean");
+        $this->form_validation->set_rules("address", "address", "xss_clean");
+
+        $emp_emerg_id = $this->uri->segment(3);
+
+        $emp_user_id = $this->input->post('emp_user_id');
+
+        if ($this->form_validation->run() == FALSE) {
+            echo  $this->upload->display_errors();
+            $this->load->view("super_admin/employee_edit_details/$emp_user_id");
+        } else {
+
+            $data_emergency = array(
+                'name' => $this->input->post('name'),
+                'relation' => $this->input->post('relation'),
+                'mobile' => $this->input->post('mobile'),
+                'address' => $this->input->post('address')
+            );
+
+            $this->db->where('emp_emerg_id', $emp_emerg_id);
+            $this->db->update('emp_emergency_contact', $data_emergency);
+
+            redirect("super_admin/employee_edit_details/$emp_user_id");
+        }
+        redirect("super_admin/employee_edit_details/$emp_user_id");
+    }
+
+    function update_reference() {
+        $this->load->library("form_validation");
+        $this->form_validation->set_rules("emp_user_id", "emp_user_id", "xss_clean");
+        $this->form_validation->set_rules("name", "name", "xss_clean");
+        $this->form_validation->set_rules("occupation", "occupation", "xss_clean");
+        $this->form_validation->set_rules("mobile", "mobile", "xss_clean");
+        $this->form_validation->set_rules("email", "email", "xss_clean");
+        $this->form_validation->set_rules("address", "address", "xss_clean");
+
+        $emp_ref_id = $this->uri->segment(3);
+
+        $emp_user_id = $this->input->post('emp_user_id');
+
+        if ($this->form_validation->run() == FALSE) {
+            echo  $this->upload->display_errors();
+            $this->load->view("super_admin/employee_edit_details/$emp_user_id");
+        } else {
+
+            $data_reference = array(
+                'name' => $this->input->post('name'),
+                'occupation' => $this->input->post('occupation'),
+                'mobile' => $this->input->post('mobile'),
+                'email' => $this->input->post('email'),
+                'address' => $this->input->post('address')
+            );
+
+            $this->db->where('emp_ref_id', $emp_ref_id);
+            $this->db->update('emp_reference', $data_reference);
+
+            redirect("super_admin/employee_edit_details/$emp_user_id");
+        }
+        redirect("super_admin/employee_edit_details/$emp_user_id");
+    }
+
+    function update_children_details() {
+        $this->load->library("form_validation");
+        $this->form_validation->set_rules("emp_user_id", "emp_user_id", "xss_clean");
+        $this->form_validation->set_rules("name", "name", "xss_clean");
+        $this->form_validation->set_rules("gender", "gender", "xss_clean");
+        $this->form_validation->set_rules("dob", "dob", "xss_clean");
+
+        $emp_child_id = $this->uri->segment(3);
+
+        $emp_user_id = $this->input->post('emp_user_id');
+
+        if ($this->form_validation->run() == FALSE) {
+            echo  $this->upload->display_errors();
+            $this->load->view("super_admin/employee_edit_details/$emp_user_id");
+        } else {
+
+            $data_children = array(
+                'name' => $this->input->post('name'),
+                'gender' => $this->input->post('gender'),
+                'dob' => $this->input->post('dob')
+            );
+
+            $this->db->where('emp_child_id', $emp_child_id);
+            $this->db->update('emp_children_details', $data_children);
+
+            redirect("super_admin/employee_edit_details/$emp_user_id");
+        }
+        redirect("super_admin/employee_edit_details/$emp_user_id");
+    }
+
+    function update_society_details() {
+        $this->load->library("form_validation");
+        $this->form_validation->set_rules("emp_user_id", "emp_user_id", "xss_clean");
+        $this->form_validation->set_rules("association", "association", "xss_clean");
+        $this->form_validation->set_rules("activities", "activities", "xss_clean");
+        $this->form_validation->set_rules("start_date", "start_date", "xss_clean");
+        $this->form_validation->set_rules("end_date", "end_date", "xss_clean");
+
+        $emp_soc_id = $this->uri->segment(3);
+
+        $emp_user_id = $this->input->post('emp_user_id');
+
+        if ($this->form_validation->run() == FALSE) {
+            echo  $this->upload->display_errors();
+            $this->load->view("super_admin/employee_edit_details/$emp_user_id");
+        } else {
+
+            $data_society = array(
+                'association' => $this->input->post('association'),
+                'activities' => $this->input->post('activities'),
+                'start_date' => $this->input->post('start_date'),
+                'end_date' => $this->input->post('end_date')
+            );
+
+            $this->db->where('emp_soc_id', $emp_soc_id);
+            $this->db->update('emp_society_member', $data_society);
+
+            redirect("super_admin/employee_edit_details/$emp_user_id");
+        }
+        redirect("super_admin/employee_edit_details/$emp_user_id");
     }
 
     // Department Model Starts

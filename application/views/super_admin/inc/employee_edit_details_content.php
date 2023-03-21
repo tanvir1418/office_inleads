@@ -246,22 +246,29 @@
                                 <table class="table table-striped focus-on">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
                                             <th>Organization</th>
                                             <th>Designation</th>
                                             <th>Start Date</th>
                                             <th>End Date</th>
+                                            <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php $i = 1;
-                                        foreach ($this->emm->get_employee_history_by_userid() as $rowHis) : ?>
+                                        <?php foreach ($this->emm->get_employee_history_by_userid() as $rowHis) : ?>
                                             <tr>
-                                                <td><?= $i++ ?></td>
-                                                <td><?= $rowHis->organization ?></td>
-                                                <td><?= $rowHis->designation ?></td>
-                                                <td><?= implode("-", array_reverse(explode("-", $rowHis->start_date))) ?></td>
-                                                <td><?= implode("-", array_reverse(explode("-", $rowHis->end_date))) ?></td>
+                                                <form action="<?= base_url() ?>super_admin/update_employment_history/<?= $rowHis->emp_his_id ?>" method="POST" enctype="multipart/form-data">
+                                                    <input type="hidden" name="emp_user_id" value="<?= $rowHis->emp_user_id ?>">
+                                                    <td><input type="text" class="form-control" name="organization" value="<?= $rowHis->organization ?>" placeholder="Enter organization"></td>
+                                                    <td><input type="text" class="form-control" name="designation" value="<?= $rowHis->designation ?>" placeholder="Enter designation"></td>
+                                                    <td><input type="date" class="form-control" name="start_date" value="<?= $rowHis->start_date ?>"></td>
+                                                    <td><input type="date" class="form-control" name="end_date" value="<?= $rowHis->end_date ?>"></td>
+                                                    <td>
+                                                        <a onclick="return confirm('Want to delete this employment history ?');" href="<?= base_url() ?>super_admin/delete_employment_history/<?= $rowHis->emp_his_id ?>" class="btn btn-danger mt-0 tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Delete">
+                                                            <i class="fas fa-times-circle"></i></a>
+
+                                                        <button class="btn btn-primary mt-0 tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Update"><i class="fas fa-check-circle"></i></button>
+                                                    </td>
+                                                </form>
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>
@@ -278,24 +285,31 @@
                                 <table class="table table-striped focus-on">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
                                             <th>Degree</th>
                                             <th>Institution</th>
                                             <th>Subject</th>
                                             <th>Result</th>
                                             <th>Completion</th>
+                                            <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php $i = 1;
-                                        foreach ($this->emm->get_employee_academic_qualification_by_userid() as $rowQual) : ?>
+                                        <?php foreach ($this->emm->get_employee_academic_qualification_by_userid() as $rowQual) : ?>
                                             <tr>
-                                                <td><?= $i++ ?></td>
-                                                <td><?= $rowQual->degree ?></td>
-                                                <td><?= $rowQual->institution ?></td>
-                                                <td><?= $rowQual->subject ?></td>
-                                                <td><?= $rowQual->result ?></td>
-                                                <td><?= $rowQual->completion ?></td>
+                                                <form action="<?= base_url() ?>super_admin/update_academic_qualification/<?= $rowQual->emp_acad_id ?>" method="POST" enctype="multipart/form-data">
+                                                    <input type="hidden" name="emp_user_id" value="<?= $rowQual->emp_user_id ?>">
+                                                    <td><input type="text" class="form-control" name="degree" value="<?= $rowQual->degree ?>" placeholder="Enter degree"></td>
+                                                    <td><input type="text" class="form-control" name="institution" value="<?= $rowQual->institution ?>" placeholder="Enter institution"></td>
+                                                    <td><input type="text" class="form-control" name="subject" value="<?= $rowQual->subject ?>" placeholder="Enter subject"></td>
+                                                    <td><input type="text" class="form-control" name="result" value="<?= $rowQual->result ?>" placeholder="Enter result"></td>
+                                                    <td><input type="number" class="form-control" name="completion" value="<?= $rowQual->completion ?>" placeholder="Enter completion"></td>
+                                                    <td>
+                                                        <a onclick="return confirm('Want to delete this academic qualification ?');" href="<?= base_url() ?>super_admin/delete_academic_qualification/<?= $rowQual->emp_acad_id ?>" class="btn btn-danger mt-0 tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Delete">
+                                                            <i class="fas fa-times-circle"></i></a>
+
+                                                        <button class="btn btn-primary mt-0 tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Update"><i class="fas fa-check-circle"></i></button>
+                                                    </td>
+                                                </form>
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>
@@ -313,22 +327,29 @@
                                 <table class="table table-striped focus-on">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
                                             <th>Title</th>
                                             <th>Institution</th>
                                             <th>Start Date</th>
                                             <th>End Date</th>
+                                            <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php $i = 1;
-                                        foreach ($this->emm->get_employee_training_details_by_userid() as $rowTrain) : ?>
+                                        <?php foreach ($this->emm->get_employee_training_details_by_userid() as $rowTrain) : ?>
                                             <tr>
-                                                <td><?= $i++ ?></td>
-                                                <td><?= $rowTrain->title ?></td>
-                                                <td><?= $rowTrain->institution ?></td>
-                                                <td><?= implode("-", array_reverse(explode("-", $rowTrain->start_date))) ?></td>
-                                                <td><?= implode("-", array_reverse(explode("-", $rowTrain->end_date))) ?></td>
+                                                <form action="<?= base_url() ?>super_admin/update_training_details/<?= $rowTrain->emp_training_id ?>" method="POST" enctype="multipart/form-data">
+                                                    <input type="hidden" name="emp_user_id" value="<?= $rowTrain->emp_user_id ?>">
+                                                    <td><input type="text" class="form-control" name="title" value="<?= $rowTrain->title ?>" placeholder="Enter title"></td>
+                                                    <td><input type="text" class="form-control" name="institution" value="<?= $rowTrain->institution ?>" placeholder="Enter institution"></td>
+                                                    <td><input type="date" class="form-control" name="start_date" value="<?= $rowTrain->start_date ?>"></td>
+                                                    <td><input type="date" class="form-control" name="end_date" value="<?= $rowTrain->end_date ?>"></td>
+                                                    <td>
+                                                        <a onclick="return confirm('Want to delete this training details ?');" href="<?= base_url() ?>super_admin/delete_training_details/<?= $rowTrain->emp_training_id ?>" class="btn btn-danger mt-0 tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Delete">
+                                                            <i class="fas fa-times-circle"></i></a>
+                                                        
+                                                        <button class="btn btn-primary mt-0 tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Update"><i class="fas fa-check-circle"></i></button>
+                                                    </td>
+                                                </form>
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>
@@ -346,59 +367,31 @@
                                 <table class="table table-striped focus-on">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
                                             <th>Certificate</th>
                                             <th>Institution</th>
                                             <th>Start Date</th>
                                             <th>End Date</th>
                                             <th>Completion</th>
+                                            <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php $i = 1;
-                                        foreach ($this->emm->get_employee_prof_certification_by_userid() as $rowCert) : ?>
+                                        <?php foreach ($this->emm->get_employee_prof_certification_by_userid() as $rowCert) : ?>
                                             <tr>
-                                                <td><?= $i++ ?></td>
-                                                <td><?= $rowCert->certificate ?></td>
-                                                <td><?= $rowCert->institution ?></td>
-                                                <td><?= implode("-", array_reverse(explode("-", $rowCert->start_date))) ?></td>
-                                                <td><?= implode("-", array_reverse(explode("-", $rowCert->end_date))) ?></td>
-                                                <td><?= $rowCert->completion ?></td>
-                                            </tr>
-                                        <?php endforeach; ?>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-12 profile-detail">
-                                <h5 class="pl-2" style="text-decoration: underline;"> <i class="fa fa-graduation-cap text-dark"></i> Academic Qualification:</h5>
-                            </div>
-                            <div class="col-lg-12">
-                                <table class="table table-striped focus-on">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Degree</th>
-                                            <th>Institution</th>
-                                            <th>Subject</th>
-                                            <th>Result</th>
-                                            <th>Completion</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php $i = 1;
-                                        foreach ($this->emm->get_employee_academic_qualification_by_userid() as $rowQual) : ?>
-                                            <tr>
-                                                <td><?= $i++ ?></td>
-                                                <td><?= $rowQual->degree ?></td>
-                                                <td><?= $rowQual->institution ?></td>
-                                                <td><?= $rowQual->subject ?></td>
-                                                <td><?= $rowQual->result ?></td>
-                                                <td><?= $rowQual->completion ?></td>
+                                                <form action="<?= base_url() ?>super_admin/update_prof_certification/<?= $rowCert->emp_cerf_id ?>" method="POST" enctype="multipart/form-data">
+                                                    <input type="hidden" name="emp_user_id" value="<?= $rowCert->emp_user_id ?>">
+                                                    <td><input type="text" class="form-control" name="certificate" value="<?= $rowCert->certificate ?>" placeholder="Enter certificate"></td>
+                                                    <td><input type="text" class="form-control" name="institution" value="<?= $rowCert->institution ?>" placeholder="Enter institution"></td>
+                                                    <td><input type="date" class="form-control" name="start_date" value="<?= $rowCert->start_date ?>"></td>
+                                                    <td><input type="date" class="form-control" name="end_date" value="<?= $rowCert->end_date ?>"></td>
+                                                    <td><input type="number" class="form-control" name="completion" value="<?= $rowCert->completion ?>" placeholder="Enter completion"></td>
+                                                    <td>
+                                                        <a onclick="return confirm('Want to delete this training details ?');" href="<?= base_url() ?>super_admin/delete_prof_certification/<?= $rowCert->emp_cerf_id ?>" class="btn btn-danger mt-0 tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Delete">
+                                                            <i class="fas fa-times-circle"></i></a>
+                                                        
+                                                        <button class="btn btn-primary mt-0 tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Update"><i class="fas fa-check-circle"></i></button>
+                                                    </td>
+                                                </form>
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>
@@ -416,22 +409,29 @@
                                 <table class="table table-striped focus-on">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
                                             <th>Name</th>
                                             <th>Relation</th>
                                             <th>Mobile</th>
                                             <th>Address</th>
+                                            <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php $i = 1;
-                                        foreach ($this->emm->get_employee_emergency_contact_by_userid() as $rowEmerg) : ?>
+                                        <?php foreach ($this->emm->get_employee_emergency_contact_by_userid() as $rowEmerg) : ?>
                                             <tr>
-                                                <td><?= $i++ ?></td>
-                                                <td><?= $rowEmerg->name ?></td>
-                                                <td><?= $rowEmerg->relation ?></td>
-                                                <td><?= $rowEmerg->mobile ?></td>
-                                                <td><?= $rowEmerg->address ?></td>
+                                                <form action="<?= base_url() ?>super_admin/update_emergency_contact/<?= $rowEmerg->emp_emerg_id ?>" method="POST" enctype="multipart/form-data">
+                                                    <input type="hidden" name="emp_user_id" value="<?= $rowEmerg->emp_user_id ?>">
+                                                    <td><input type="text" class="form-control" name="name" value="<?= $rowEmerg->name ?>" placeholder="Enter name"></td>
+                                                    <td><input type="text" class="form-control" name="relation" value="<?= $rowEmerg->relation ?>" placeholder="Enter relation"></td>
+                                                    <td><input type="text" class="form-control" name="mobile" value="<?= $rowEmerg->mobile ?>" placeholder="Enter mobile"></td>
+                                                    <td><textarea class="form-control" name="address" placeholder="Enter present address"><?= $rowEmerg->address ?></textarea></td>
+                                                    <td>
+                                                        <a onclick="return confirm('Want to delete this emergency contact ?');" href="<?= base_url() ?>super_admin/delete_emergency_contact/<?= $rowEmerg->emp_emerg_id ?>" class="btn btn-danger mt-0 tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Delete">
+                                                            <i class="fas fa-times-circle"></i></a>
+                                                        
+                                                        <button class="btn btn-primary mt-0 tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Update"><i class="fas fa-check-circle"></i></button>
+                                                    </td>
+                                                </form>
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>
@@ -449,24 +449,31 @@
                                 <table class="table table-striped focus-on">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
                                             <th>Name</th>
                                             <th>Occupation</th>
                                             <th>Mobile</th>
                                             <th>Email</th>
                                             <th>Address</th>
+                                            <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php $i = 1;
-                                        foreach ($this->emm->get_employee_reference_by_userid() as $rowRef) : ?>
+                                        <?php foreach ($this->emm->get_employee_reference_by_userid() as $rowRef) : ?>
                                             <tr>
-                                                <td><?= $i++ ?></td>
-                                                <td><?= $rowRef->name ?></td>
-                                                <td><?= $rowRef->occupation ?></td>
-                                                <td><?= $rowRef->mobile ?></td>
-                                                <td><?= $rowRef->email ?></td>
-                                                <td><?= $rowRef->address ?></td>
+                                                <form action="<?= base_url() ?>super_admin/update_reference/<?= $rowRef->emp_ref_id ?>" method="POST" enctype="multipart/form-data">
+                                                    <input type="hidden" name="emp_user_id" value="<?= $rowRef->emp_user_id ?>">
+                                                    <td><input type="text" class="form-control" name="name" value="<?= $rowRef->name ?>" placeholder="Enter name"></td>
+                                                    <td><input type="text" class="form-control" name="occupation" value="<?= $rowRef->occupation ?>" placeholder="Enter occupation"></td>
+                                                    <td><input type="text" class="form-control" name="mobile" value="<?= $rowRef->mobile ?>" placeholder="Enter mobile"></td>
+                                                    <td><input type="email" class="form-control" name="email" value="<?= $rowRef->email ?>" placeholder="Enter email"></td>
+                                                    <td><textarea class="form-control" name="address" placeholder="Enter present address"><?= $rowRef->address ?></textarea></td>
+                                                    <td>
+                                                        <a onclick="return confirm('Want to delete this reference ?');" href="<?= base_url() ?>super_admin/delete_reference/<?= $rowRef->emp_ref_id ?>" class="btn btn-danger mt-0 tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Delete">
+                                                            <i class="fas fa-times-circle"></i></a>
+                                                        
+                                                        <button class="btn btn-primary mt-0 tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Update"><i class="fas fa-check-circle"></i></button>
+                                                    </td>
+                                                </form>
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>
@@ -484,20 +491,27 @@
                                 <table class="table table-striped focus-on">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
                                             <th>Name</th>
                                             <th>Gender</th>
                                             <th>Date of Birth</th>
+                                            <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php $i = 1;
-                                        foreach ($this->emm->get_employee_children_by_userid() as $rowChild) : ?>
+                                        <?php foreach ($this->emm->get_employee_children_by_userid() as $rowChild) : ?>
                                             <tr>
-                                                <td><?= $i++ ?></td>
-                                                <td><?= $rowChild->name ?></td>
-                                                <td><?= $rowChild->gender ?></td>
-                                                <td><?= implode("-", array_reverse(explode("-", $rowChild->dob))) ?></td>
+                                                <form action="<?= base_url() ?>super_admin/update_children_details/<?= $rowChild->emp_child_id ?>" method="POST" enctype="multipart/form-data">
+                                                    <input type="hidden" name="emp_user_id" value="<?= $rowChild->emp_user_id ?>">
+                                                    <td><input type="text" class="form-control" name="name" value="<?= $rowChild->name ?>" placeholder="Enter name"></td>
+                                                    <td><input type="text" class="form-control" name="gender" value="<?= $rowChild->gender ?>" placeholder="Enter gender"></td>
+                                                    <td><input type="date" class="form-control" name="dob" value="<?= $rowChild->dob ?>"></td>
+                                                    <td>
+                                                        <a onclick="return confirm('Want to delete this children details ?');" href="<?= base_url() ?>super_admin/delete_children_details/<?= $rowChild->emp_child_id ?>" class="btn btn-danger mt-0 tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Delete">
+                                                            <i class="fas fa-times-circle"></i></a>
+                                                        
+                                                        <button class="btn btn-primary mt-0 tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Update"><i class="fas fa-check-circle"></i></button>
+                                                    </td>
+                                                </form>
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>
@@ -515,22 +529,29 @@
                                 <table class="table table-striped focus-on">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
                                             <th>Club/Association</th>
                                             <th>Nature of Activities</th>
                                             <th>Start Date</th>
                                             <th>End Date</th>
+                                            <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php $i = 1;
-                                        foreach ($this->emm->get_employee_society_member_by_userid() as $rowSoc) : ?>
+                                        <?php foreach ($this->emm->get_employee_society_member_by_userid() as $rowSoc) : ?>
                                             <tr>
-                                                <td><?= $i++ ?></td>
-                                                <td><?= $rowSoc->association ?></td>
-                                                <td><?= $rowSoc->activities ?></td>
-                                                <td><?= implode("-", array_reverse(explode("-", $rowSoc->start_date))) ?></td>
-                                                <td><?= implode("-", array_reverse(explode("-", $rowSoc->end_date))) ?></td>
+                                                <form action="<?= base_url() ?>super_admin/update_society_details/<?= $rowSoc->emp_soc_id ?>" method="POST" enctype="multipart/form-data">
+                                                    <input type="hidden" name="emp_user_id" value="<?= $rowSoc->emp_user_id ?>">
+                                                    <td><input type="text" class="form-control" name="association" value="<?= $rowSoc->association ?>" placeholder="Enter association"></td>
+                                                    <td><input type="text" class="form-control" name="activities" value="<?= $rowSoc->activities ?>" placeholder="Enter activities"></td>
+                                                    <td><input type="date" class="form-control" name="start_date" value="<?= $rowSoc->start_date ?>"></td>
+                                                    <td><input type="date" class="form-control" name="end_date" value="<?= $rowSoc->end_date ?>"></td>
+                                                    <td>
+                                                        <a onclick="return confirm('Want to delete this society details ?');" href="<?= base_url() ?>super_admin/delete_society_details/<?= $rowSoc->emp_soc_id ?>" class="btn btn-danger mt-0 tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Delete">
+                                                            <i class="fas fa-times-circle"></i></a>
+                                                        
+                                                        <button class="btn btn-primary mt-0 tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Update"><i class="fas fa-check-circle"></i></button>
+                                                    </td>
+                                                </form>
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>

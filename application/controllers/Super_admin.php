@@ -83,6 +83,54 @@ class Super_admin extends CI_Controller {
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->update_personal_details();
     }
+
+    public function update_employment_history(){
+        $this->load->library('session');
+        $this->load->model('Employee_management_model', 'emm');
+        $this->emm->update_employment_history();
+    }
+
+    public function update_academic_qualification(){
+        $this->load->library('session');
+        $this->load->model('Employee_management_model', 'emm');
+        $this->emm->update_academic_qualification();
+    }
+
+    public function update_training_details(){
+        $this->load->library('session');
+        $this->load->model('Employee_management_model', 'emm');
+        $this->emm->update_training_details();
+    }
+
+    public function update_prof_certification(){
+        $this->load->library('session');
+        $this->load->model('Employee_management_model', 'emm');
+        $this->emm->update_prof_certification();
+    }
+
+    public function update_emergency_contact(){
+        $this->load->library('session');
+        $this->load->model('Employee_management_model', 'emm');
+        $this->emm->update_emergency_contact();
+    }
+
+    public function update_reference(){
+        $this->load->library('session');
+        $this->load->model('Employee_management_model', 'emm');
+        $this->emm->update_reference();
+    }
+
+    public function update_children_details(){
+        $this->load->library('session');
+        $this->load->model('Employee_management_model', 'emm');
+        $this->emm->update_children_details();
+    }
+
+    public function update_society_details(){
+        $this->load->library('session');
+        $this->load->model('Employee_management_model', 'emm');
+        $this->emm->update_society_details();
+    }
     
     // Department Types Starts
     public function department_list() {

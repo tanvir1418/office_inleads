@@ -575,6 +575,31 @@ class Employee_management_model  extends CI_Model {
         }
     }
 
+    function create_employment_history(){
+        $this->load->library("form_validation");
+        $this->form_validation->set_rules("emp_user_id", "emp_user_id", "xss_clean");
+        $this->form_validation->set_rules("organization", "organization", "xss_clean");
+        $this->form_validation->set_rules("designation", "designation", "xss_clean");
+        $this->form_validation->set_rules("start_date", "start_date", "xss_clean");
+        $this->form_validation->set_rules("end_date", "end_date", "xss_clean");
+
+        $previous_url = $_SERVER['HTTP_REFERER'];
+
+        if ($this->form_validation->run() == FALSE) {
+            echo  $this->upload->display_errors();
+        } else {
+            $data_empl_history = array(
+                'emp_user_id' => $this->input->post('emp_user_id'),
+                'organization' => $this->input->post('organization'),
+                'designation' => $this->input->post('designation'),
+                'start_date' => $this->input->post('start_date'),
+                'end_date' => $this->input->post('end_date')
+            );
+            $this->db->insert('emp_employment_history', $data_empl_history);
+        }
+        redirect($previous_url);
+    }
+
     function update_employment_history() {
         $this->load->library("form_validation");
         $this->form_validation->set_rules("emp_user_id", "emp_user_id", "xss_clean");
@@ -612,6 +637,33 @@ class Employee_management_model  extends CI_Model {
         $previous_url = $_SERVER['HTTP_REFERER'];
         $this->db->where('emp_his_id', $emp_his_id);
         $this->db->delete('emp_employment_history');
+        redirect($previous_url);
+    }
+
+    function create_academic_qualification(){
+        $this->load->library("form_validation");
+        $this->form_validation->set_rules("emp_user_id", "emp_user_id", "xss_clean");
+        $this->form_validation->set_rules("degree", "degree", "xss_clean");
+        $this->form_validation->set_rules("institution", "institution", "xss_clean");
+        $this->form_validation->set_rules("subject", "subject", "xss_clean");
+        $this->form_validation->set_rules("result", "result", "xss_clean");
+        $this->form_validation->set_rules("completion", "completion", "xss_clean");
+
+        $previous_url = $_SERVER['HTTP_REFERER'];
+
+        if ($this->form_validation->run() == FALSE) {
+            echo  $this->upload->display_errors();
+        } else {
+            $data_academic_qual = array(
+                'emp_user_id' => $this->input->post('emp_user_id'),
+                'degree' => $this->input->post('degree'),
+                'institution' => $this->input->post('institution'),
+                'subject' => $this->input->post('subject'),
+                'result' => $this->input->post('result'),
+                'completion' => $this->input->post('completion')
+            );
+            $this->db->insert('emp_academic_qualification', $data_academic_qual);
+        }
         redirect($previous_url);
     }
 
@@ -657,6 +709,31 @@ class Employee_management_model  extends CI_Model {
         redirect($previous_url);
     }
 
+    function create_training_details(){
+        $this->load->library("form_validation");
+        $this->form_validation->set_rules("emp_user_id", "emp_user_id", "xss_clean");
+        $this->form_validation->set_rules("title", "title", "xss_clean");
+        $this->form_validation->set_rules("institution", "institution", "xss_clean");
+        $this->form_validation->set_rules("start_date", "start_date", "xss_clean");
+        $this->form_validation->set_rules("end_date", "end_date", "xss_clean");
+
+        $previous_url = $_SERVER['HTTP_REFERER'];
+
+        if ($this->form_validation->run() == FALSE) {
+            echo  $this->upload->display_errors();
+        } else {
+            $data_training = array(
+                'emp_user_id' => $this->input->post('emp_user_id'),
+                'title' => $this->input->post('title'),
+                'institution' => $this->input->post('institution'),
+                'start_date' => $this->input->post('start_date'),
+                'end_date' => $this->input->post('end_date')
+            );
+            $this->db->insert('emp_training_details', $data_training);
+        }
+        redirect($previous_url);
+    }
+
     function update_training_details() {
         $this->load->library("form_validation");
         $this->form_validation->set_rules("emp_user_id", "emp_user_id", "xss_clean");
@@ -694,6 +771,33 @@ class Employee_management_model  extends CI_Model {
         $previous_url = $_SERVER['HTTP_REFERER'];
         $this->db->where('emp_training_id', $emp_training_id);
         $this->db->delete('emp_training_details');
+        redirect($previous_url);
+    }
+
+    function create_prof_certification(){
+        $this->load->library("form_validation");
+        $this->form_validation->set_rules("emp_user_id", "emp_user_id", "xss_clean");
+        $this->form_validation->set_rules("certificate", "certificate", "xss_clean");
+        $this->form_validation->set_rules("institution", "institution", "xss_clean");
+        $this->form_validation->set_rules("start_date", "start_date", "xss_clean");
+        $this->form_validation->set_rules("end_date", "end_date", "xss_clean");
+        $this->form_validation->set_rules("completion", "completion", "xss_clean");
+
+        $previous_url = $_SERVER['HTTP_REFERER'];
+
+        if ($this->form_validation->run() == FALSE) {
+            echo  $this->upload->display_errors();
+        } else {
+            $data_certification = array(
+                'emp_user_id' => $this->input->post('emp_user_id'),
+                'certificate' => $this->input->post('certificate'),
+                'institution' => $this->input->post('institution'),
+                'start_date' => $this->input->post('start_date'),
+                'end_date' => $this->input->post('end_date'),
+                'completion' => $this->input->post('completion')
+            );
+            $this->db->insert('emp_prof_certification', $data_certification);
+        }
         redirect($previous_url);
     }
 
@@ -739,6 +843,31 @@ class Employee_management_model  extends CI_Model {
         redirect($previous_url);
     }
 
+    function create_emergency_contact(){
+        $this->load->library("form_validation");
+        $this->form_validation->set_rules("emp_user_id", "emp_user_id", "xss_clean");
+        $this->form_validation->set_rules("name", "name", "xss_clean");
+        $this->form_validation->set_rules("relation", "relation", "xss_clean");
+        $this->form_validation->set_rules("mobile", "mobile", "xss_clean");
+        $this->form_validation->set_rules("address", "address", "xss_clean");
+
+        $previous_url = $_SERVER['HTTP_REFERER'];
+
+        if ($this->form_validation->run() == FALSE) {
+            echo  $this->upload->display_errors();
+        } else {
+            $data_emergency = array(
+                'emp_user_id' => $this->input->post('emp_user_id'),
+                'name' => $this->input->post('name'),
+                'relation' => $this->input->post('relation'),
+                'mobile' => $this->input->post('mobile'),
+                'address' => $this->input->post('address')
+            );
+            $this->db->insert('emp_emergency_contact', $data_emergency);
+        }
+        redirect($previous_url);
+    }
+
     function update_emergency_contact() {
         $this->load->library("form_validation");
         $this->form_validation->set_rules("emp_user_id", "emp_user_id", "xss_clean");
@@ -776,6 +905,33 @@ class Employee_management_model  extends CI_Model {
         $previous_url = $_SERVER['HTTP_REFERER'];
         $this->db->where('emp_emerg_id', $emp_emerg_id);
         $this->db->delete('emp_emergency_contact');
+        redirect($previous_url);
+    }
+
+    function create_reference(){
+        $this->load->library("form_validation");
+        $this->form_validation->set_rules("emp_user_id", "emp_user_id", "xss_clean");
+        $this->form_validation->set_rules("name", "name", "xss_clean");
+        $this->form_validation->set_rules("occupation", "occupation", "xss_clean");
+        $this->form_validation->set_rules("mobile", "mobile", "xss_clean");
+        $this->form_validation->set_rules("email", "email", "xss_clean");
+        $this->form_validation->set_rules("address", "address", "xss_clean");
+
+        $previous_url = $_SERVER['HTTP_REFERER'];
+
+        if ($this->form_validation->run() == FALSE) {
+            echo  $this->upload->display_errors();
+        } else {
+            $data_reference = array(
+                'emp_user_id' => $this->input->post('emp_user_id'),
+                'name' => $this->input->post('name'),
+                'occupation' => $this->input->post('occupation'),
+                'mobile' => $this->input->post('mobile'),
+                'email' => $this->input->post('email'),
+                'address' => $this->input->post('address')
+            );
+            $this->db->insert('emp_reference', $data_reference);
+        }
         redirect($previous_url);
     }
 
@@ -821,6 +977,29 @@ class Employee_management_model  extends CI_Model {
         redirect($previous_url);
     }
 
+    function create_children_details(){
+        $this->load->library("form_validation");
+        $this->form_validation->set_rules("emp_user_id", "emp_user_id", "xss_clean");
+        $this->form_validation->set_rules("name", "name", "xss_clean");
+        $this->form_validation->set_rules("gender", "gender", "xss_clean");
+        $this->form_validation->set_rules("dob", "dob", "xss_clean");
+
+        $previous_url = $_SERVER['HTTP_REFERER'];
+
+        if ($this->form_validation->run() == FALSE) {
+            echo  $this->upload->display_errors();
+        } else {
+            $data_children = array(
+                'emp_user_id' => $this->input->post('emp_user_id'),
+                'name' => $this->input->post('name'),
+                'gender' => $this->input->post('gender'),
+                'dob' => $this->input->post('dob')
+            );
+            $this->db->insert('emp_children_details', $data_children);
+        }
+        redirect($previous_url);
+    }
+
     function update_children_details() {
         $this->load->library("form_validation");
         $this->form_validation->set_rules("emp_user_id", "emp_user_id", "xss_clean");
@@ -856,6 +1035,31 @@ class Employee_management_model  extends CI_Model {
         $previous_url = $_SERVER['HTTP_REFERER'];
         $this->db->where('emp_child_id', $emp_child_id);
         $this->db->delete('emp_children_details');
+        redirect($previous_url);
+    }
+
+    function create_society_details(){
+        $this->load->library("form_validation");
+        $this->form_validation->set_rules("emp_user_id", "emp_user_id", "xss_clean");
+        $this->form_validation->set_rules("association", "association", "xss_clean");
+        $this->form_validation->set_rules("activities", "activities", "xss_clean");
+        $this->form_validation->set_rules("start_date", "start_date", "xss_clean");
+        $this->form_validation->set_rules("end_date", "end_date", "xss_clean");
+
+        $previous_url = $_SERVER['HTTP_REFERER'];
+
+        if ($this->form_validation->run() == FALSE) {
+            echo  $this->upload->display_errors();
+        } else {
+            $data_society = array(
+                'emp_user_id' => $this->input->post('emp_user_id'),
+                'association' => $this->input->post('association'),
+                'activities' => $this->input->post('activities'),
+                'start_date' => $this->input->post('start_date'),
+                'end_date' => $this->input->post('end_date')
+            );
+            $this->db->insert('emp_society_member', $data_society);
+        }
         redirect($previous_url);
     }
 

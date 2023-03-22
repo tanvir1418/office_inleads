@@ -45,7 +45,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="text-center mb-4">
-                            <h5 class="mb-0 pl-2" style="text-decoration: underline;"> <i class="fa fa-graduation-cap text-dark"></i> Employee Details:</h5>
+                            <h5 class="mb-0 pl-2" style="text-decoration: underline;"> <i class="fa fa-graduation-cap text-dark"></i> Employee Details</h5>
                         </div>
 
                         <form action="<?= base_url() ?>super_admin/update_employee_details" method="post" enctype="multipart/form-data">
@@ -240,7 +240,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12 profile-detail">
-                                <h5 class="pl-2" style="text-decoration: underline;"> <i class="fa fa-graduation-cap text-dark"></i> Employment History:</h5>
+                                <h5 class="pl-2"><i class="fa fa-graduation-cap text-dark"></i> <span style="text-decoration: underline;">Employment History</span> || <a class="btn btn-dark text-white ml-2" data-toggle="modal" data-target=".create_employment_history">Add New</a></h5>
                             </div>
                             <div class="col-lg-12">
                                 <table class="table table-striped focus-on">
@@ -279,7 +279,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12 profile-detail">
-                                <h5 class="pl-2" style="text-decoration: underline;"> <i class="fa fa-graduation-cap text-dark"></i> Academic Qualification:</h5>
+                                <h5 class="pl-2"><i class="fa fa-graduation-cap text-dark"></i> <span style="text-decoration: underline;">Academic Qualification</span> || <a class="btn btn-dark text-white ml-2" data-toggle="modal" data-target=".create_academic_qualification">Add New</a></h5>
                             </div>
                             <div class="col-lg-12">
                                 <table class="table table-striped focus-on">
@@ -321,7 +321,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12 profile-detail">
-                                <h5 class="pl-2" style="text-decoration: underline;"> <i class="fa fa-graduation-cap text-dark"></i> Training Details:</h5>
+                                <h5 class="pl-2"><i class="fa fa-graduation-cap text-dark"></i> <span style="text-decoration: underline;">Training Details</span> || <a class="btn btn-dark text-white ml-2" data-toggle="modal" data-target=".create_training_details">Add New</a></h5>
                             </div>
                             <div class="col-lg-12">
                                 <table class="table table-striped focus-on">
@@ -361,7 +361,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12 profile-detail">
-                                <h5 class="pl-2" style="text-decoration: underline;"> <i class="fa fa-graduation-cap text-dark"></i> Professional Certification:</h5>
+                                <h5 class="pl-2"><i class="fa fa-graduation-cap text-dark"></i> <span style="text-decoration: underline;">Professional Certification</span> || <a class="btn btn-dark text-white ml-2" data-toggle="modal" data-target=".create_prof_certification">Add New</a></h5>
                             </div>
                             <div class="col-lg-12">
                                 <table class="table table-striped focus-on">
@@ -403,7 +403,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12 profile-detail">
-                                <h5 class="pl-2" style="text-decoration: underline;"> <i class="fa fa-graduation-cap text-dark"></i> Emergency Contact:</h5>
+                                <h5 class="pl-2"><i class="fa fa-graduation-cap text-dark"></i> <span style="text-decoration: underline;">Emergency Contact</span> || <a class="btn btn-dark text-white ml-2" data-toggle="modal" data-target=".create_emergency_contact">Add New</a></h5>
                             </div>
                             <div class="col-lg-12">
                                 <table class="table table-striped focus-on">
@@ -424,7 +424,7 @@
                                                     <td><input type="text" class="form-control" name="name" value="<?= $rowEmerg->name ?>" placeholder="Enter name"></td>
                                                     <td><input type="text" class="form-control" name="relation" value="<?= $rowEmerg->relation ?>" placeholder="Enter relation"></td>
                                                     <td><input type="text" class="form-control" name="mobile" value="<?= $rowEmerg->mobile ?>" placeholder="Enter mobile"></td>
-                                                    <td><textarea class="form-control" name="address" placeholder="Enter present address"><?= $rowEmerg->address ?></textarea></td>
+                                                    <td><textarea class="form-control" name="address" placeholder="Enter address"><?= $rowEmerg->address ?></textarea></td>
                                                     <td>
                                                         <a onclick="return confirm('Want to delete this emergency contact ?');" href="<?= base_url() ?>super_admin/delete_emergency_contact/<?= $rowEmerg->emp_emerg_id ?>" class="btn btn-danger mt-0 tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Delete">
                                                             <i class="fas fa-times-circle"></i></a>
@@ -443,7 +443,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12 profile-detail">
-                                <h5 class="pl-2" style="text-decoration: underline;"> <i class="fa fa-graduation-cap text-dark"></i> References:</h5>
+                                <h5 class="pl-2"><i class="fa fa-graduation-cap text-dark"></i> <span style="text-decoration: underline;">References</span> || <a class="btn btn-dark text-white ml-2" data-toggle="modal" data-target=".create_reference">Add New</a></h5>
                             </div>
                             <div class="col-lg-12">
                                 <table class="table table-striped focus-on">
@@ -466,7 +466,7 @@
                                                     <td><input type="text" class="form-control" name="occupation" value="<?= $rowRef->occupation ?>" placeholder="Enter occupation"></td>
                                                     <td><input type="text" class="form-control" name="mobile" value="<?= $rowRef->mobile ?>" placeholder="Enter mobile"></td>
                                                     <td><input type="email" class="form-control" name="email" value="<?= $rowRef->email ?>" placeholder="Enter email"></td>
-                                                    <td><textarea class="form-control" name="address" placeholder="Enter present address"><?= $rowRef->address ?></textarea></td>
+                                                    <td><textarea class="form-control" name="address" placeholder="Enter address"><?= $rowRef->address ?></textarea></td>
                                                     <td>
                                                         <a onclick="return confirm('Want to delete this reference ?');" href="<?= base_url() ?>super_admin/delete_reference/<?= $rowRef->emp_ref_id ?>" class="btn btn-danger mt-0 tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Delete">
                                                             <i class="fas fa-times-circle"></i></a>
@@ -485,7 +485,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12 profile-detail">
-                                <h5 class="pl-2" style="text-decoration: underline;"> <i class="fa fa-graduation-cap text-dark"></i> Children Details:</h5>
+                                <h5 class="pl-2"><i class="fa fa-graduation-cap text-dark"></i> <span style="text-decoration: underline;">Children Details</span> || <a class="btn btn-dark text-white ml-2" data-toggle="modal" data-target=".create_children_details">Add New</a></h5>
                             </div>
                             <div class="col-lg-12">
                                 <table class="table table-striped focus-on">
@@ -523,7 +523,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12 profile-detail">
-                                <h5 class="pl-2" style="text-decoration: underline;"> <i class="fa fa-graduation-cap text-dark"></i> Membership In Societies/Club/Association:</h5>
+                                <h5 class="pl-2"><i class="fa fa-graduation-cap text-dark"></i> <span style="text-decoration: underline;">Membership In Societies/Club/Association</span> || <a class="btn btn-dark text-white ml-2" data-toggle="modal" data-target=".create_society_details">Add New</a></h5>
                             </div>
                             <div class="col-lg-12">
                                 <table class="table table-striped focus-on">

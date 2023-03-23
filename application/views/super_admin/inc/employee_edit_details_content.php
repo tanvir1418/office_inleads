@@ -60,7 +60,7 @@
                                         <label for="dsgn_id">Designation:</label>
                                         <select class="form-control" name="dsgn_id" id="dsgn_id">
                                             <option value="" selected="" disabled="" hidden="">Choose here</option>
-                                            <?php foreach ($this->emm->get_active_designation_list() as $rowDsgn) : ?>
+                                            <?php foreach ($this->cmm->get_active_designation_list() as $rowDsgn) : ?>
                                                 <option value="<?= $rowDsgn->dsgn_id ?>" <?= $rowDsgn->dsgn_id == $rowEmp->dsgn_id ? 'selected' : '' ?>><?= $rowDsgn->dsgn_name ?></option>
                                             <?php endforeach; ?>
                                         </select>
@@ -71,7 +71,7 @@
                                             <div class="input-group-prepend">
                                                 <select class="form-control input-group-text text-left" name="idcard_id">
                                                     <option value="" selected="" disabled="" hidden="">CHOOSE HERE</option>
-                                                    <?php foreach ($this->emm->get_active_idcard_type_list() as $rowIdcard) : ?>
+                                                    <?php foreach ($this->cmm->get_active_idcard_type_list() as $rowIdcard) : ?>
                                                         <option value="<?= $rowIdcard->idcard_id ?>" <?= $rowIdcard->idcard_id == $rowEmp->idcard_id ? 'selected' : '' ?>><?= $rowIdcard->idcard_name ?></option>
                                                     <?php endforeach; ?>
                                                 </select>
@@ -91,7 +91,7 @@
                                         <label for="dept_id">Department:</label>
                                         <select class="form-control" name="dept_id" id="dept_id">
                                             <option value="" selected="" disabled="" hidden="">Choose here</option>
-                                            <?php foreach ($this->emm->get_active_department_list() as $rowDept) : ?>
+                                            <?php foreach ($this->cmm->get_active_department_list() as $rowDept) : ?>
                                                 <option value="<?= $rowDept->dept_id ?>" <?= $rowDept->dept_id == $rowEmp->dept_id ? 'selected' : '' ?>><?= $rowDept->dept_name ?></option>
                                             <?php endforeach; ?>
                                         </select>
@@ -104,7 +104,7 @@
                                         <label for="empl_id">Employment Type:</label>
                                         <select class="form-control" name="empl_id" id="empl_id">
                                             <option value="" selected="" disabled="" hidden="">Choose here</option>
-                                            <?php foreach ($this->emm->get_active_employment_type_list() as $rowEmpl) : ?>
+                                            <?php foreach ($this->cmm->get_active_employment_type_list() as $rowEmpl) : ?>
                                                 <option value="<?= $rowEmpl->empl_id ?>" <?= $rowEmpl->empl_id == $rowEmp->empl_id ? 'selected' : '' ?>><?= $rowEmpl->empl_name ?></option>
                                             <?php endforeach; ?>
                                         </select>

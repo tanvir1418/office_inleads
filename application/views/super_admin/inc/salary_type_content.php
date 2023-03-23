@@ -17,7 +17,7 @@
                         </thead>
                         <tbody>
                             <?php $i = 1;
-                            foreach ($this->emm->get_salary_type_list() as $row) : ?>
+                            foreach ($this->cmm->get_salary_type_list() as $row) : ?>
                                 <tr>
                                     <td><?= $i++ ?></td>
                                     <td><?= $row->salary_name ?></td>

@@ -18,7 +18,7 @@
                         </thead>
                         <tbody>
                             <?php $i = 1;
-                            foreach ($this->emm->get_designation_list() as $row) : ?>
+                            foreach ($this->cmm->get_designation_list() as $row) : ?>
                                 <tr>
                                     <td><?= $i++ ?></td>
                                     <td><?= $row->dsgn_name ?></td>

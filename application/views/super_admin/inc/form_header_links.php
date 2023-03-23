@@ -5,8 +5,8 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <title>Captain Foundation || Developed by Inleads IT Solution Ltd</title>
-    <meta content="Captain Foundation || Developed by Inleads IT Solution Ltd" name="description" />
+    <title>Office Inleads</title>
+    <meta content="Office Inleads || Developed by Inleads IT Solution Ltd" name="description" />
     <meta content="Inleads IT Solution Ltd" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 

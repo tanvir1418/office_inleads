@@ -25,12 +25,12 @@
                             <?php foreach ($this->emm->get_employee_details_by_userid() as $rowEmp) : ?>
                                 <h5 class="mt-2 mb-0"><?= $rowEmp->employee_name ?></h5>
                                 <?php
-                                    $this->db->where('dsgn_id', $rowEmp->dsgn_id);
-                                    $designation = $this->db->get("designation_list")->row('dsgn_name');
+                                $this->db->where('dsgn_id', $rowEmp->dsgn_id);
+                                $designation = $this->db->get("designation_list")->row('dsgn_name');
                                 ?>
                                 <small class="text-muted"><?= $designation ?></small>
                                 <p class="text-muted mb-2 p-2">
-                                    <a href="#">
+                                    <a href="<?= base_url() ?>uploads/photos/<?= $rowEmp->image ?>">
                                         <img src="<?= base_url() ?>uploads/photos/<?= $rowEmp->image ?>" alt="" class="img-fluid rounded-circle w-80">
                                     </a>
                                 </p>
@@ -64,13 +64,19 @@
                         <div class="card m-b-30">
                             <div class="card-body">
                                 <h6 class="header-title pb-3">Emergency Contact</h6>
-                                <?php foreach ($this->emm->get_employee_emergency_contact_by_userid() as $rowEmerg) : ?>
+                                <?php
+                                    $rowEmerg = $this->emm->get_employee_emergency_contact_by_userid();
+                                    $rowEmergCount = count($rowEmerg);
+                                ?>
+                                <?php //foreach ($this->emm->get_employee_emergency_contact_by_userid() as $rowEmerg) : ?>
+                                <?php if ($rowEmergCount > 0) : ?>
                                     <ul class="list-unstyled mb-0">
-                                        <li class=""><i class="fas fa-user mr-2"></i><?= $rowEmerg->name ?> (<?= $rowEmerg->relation ?>)</li>
-                                        <li class="mt-2"><i class="fas fa-phone mt-2 mr-2"></i><?= $rowEmerg->mobile ?></li>
-                                        <li class="mt-2"><i class="fas fa-map-marker-alt mt-2 mr-2"></i><?= $rowEmerg->address ?></li>
+                                        <li class=""><i class="fas fa-user mr-2"></i><?= $rowEmerg[0]->name ?> (<?= $rowEmerg[0]->relation ?>)</li>
+                                        <li class="mt-2"><i class="fas fa-phone mt-2 mr-2"></i><?= $rowEmerg[0]->mobile ?></li>
+                                        <li class="mt-2"><i class="fas fa-map-marker-alt mt-2 mr-2"></i><?= $rowEmerg[0]->address ?></li>
                                     </ul>
-                                <?php endforeach; ?>
+                                <?php endif; ?>
+                                <?php //endforeach; ?>
                             </div>
                         </div>
                     </div>
@@ -90,6 +96,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="#employee_history" data-toggle="tab" aria-expanded="false"><i class="ti-shopping-cart mr-2"></i>Employment History</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#leave_details" data-toggle="tab" aria-expanded="false"><i class="ti-shopping-cart mr-2"></i>Leave Details</a>
+                            </li>
                         </ul>
                     </div>
                     <div class="card-body">
@@ -105,25 +114,25 @@
                                                 <ul>
                                                     <li><b>Name:</b> <?= $rowEmp2->employee_name ?></li>
                                                     <?php
-                                                        $this->db->where('dsgn_id', $rowEmp2->dsgn_id);
-                                                        $designation = $this->db->get("designation_list")->row('dsgn_name');
+                                                    $this->db->where('dsgn_id', $rowEmp2->dsgn_id);
+                                                    $designation = $this->db->get("designation_list")->row('dsgn_name');
                                                     ?>
                                                     <li><b>Designation:</b> <?= $designation ?></li>
                                                     <?php
-                                                        $this->db->where('idcard_id', $rowEmp2->idcard_id);
-                                                        $pre_idcard = $this->db->get("idcard_type_list")->row('idcard_name');
+                                                    $this->db->where('idcard_id', $rowEmp2->idcard_id);
+                                                    $pre_idcard = $this->db->get("idcard_type_list")->row('idcard_name');
                                                     ?>
                                                     <li><b>Id Card:</b> <?= $pre_idcard ?>-<?= $rowEmp2->employee_id ?></li>
                                                     <li><b>Joining Date:</b> <?= implode("-", array_reverse(explode("-", $rowEmp2->date_of_joining))) ?></li>
-                                                    <?php    
-                                                        $this->db->where('dept_id', $rowEmp2->dept_id);
-                                                        $department = $this->db->get("department_list")->row('dept_name');
+                                                    <?php
+                                                    $this->db->where('dept_id', $rowEmp2->dept_id);
+                                                    $department = $this->db->get("department_list")->row('dept_name');
                                                     ?>
                                                     <li><b>Department:</b> <?= $department ?></li>
                                                     <li><b>Location:</b> <?= $rowEmp2->location ?></li>
-                                                    <?php    
-                                                        $this->db->where('empl_id', $rowEmp2->empl_id);
-                                                        $employment_type = $this->db->get("employment_type_list")->row('empl_name');
+                                                    <?php
+                                                    $this->db->where('empl_id', $rowEmp2->empl_id);
+                                                    $employment_type = $this->db->get("employment_type_list")->row('empl_name');
                                                     ?>
                                                     <li><b>Employment Type:</b> <?= $employment_type ?></li>
                                                     <li><b>Status:</b> <?= $rowEmp2->status ?></li>
@@ -133,6 +142,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="tab-pane" id="personal_details">
                                     <div class="row justify-content-center">
                                         <div class="col-md-12  profile-detail">
@@ -202,6 +212,37 @@
                                         </div>
                                     </div>
                                 </div>
+                                
+                                <div class="tab-pane" id="leave_details">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <table id="tech-companies-1" class="table table-striped focus-on">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>Organization</th>
+                                                        <th>Designation</th>
+                                                        <th>Start Date</th>
+                                                        <th>End Date</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php $i = 1;
+                                                    foreach ($this->emm->get_employee_history_by_userid() as $row) : ?>
+                                                        <tr>
+                                                            <td><?= $i++ ?></td>
+                                                            <td><?= $row->organization ?></td>
+                                                            <td><?= $row->designation ?></td>
+                                                            <td><?= implode("-", array_reverse(explode("-", $row->start_date))) ?></td>
+                                                            <td><?= implode("-", array_reverse(explode("-", $row->end_date))) ?></td>
+                                                        </tr>
+                                                    <?php endforeach; ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>

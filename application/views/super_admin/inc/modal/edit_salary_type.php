@@ -3,7 +3,7 @@
         <div class="modal-dialog modal-md">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalform">Edit Id-Card Type</h5>
+                    <h5 class="modal-title" id="exampleModalform">Edit Salary Type</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true" class="text-dark">&times;</span>
                     </button>
@@ -12,7 +12,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group" id="edit_salary_type_input">
-                                <label for="salary_name" class="control-label">Id-Card Type</label>
+                                <label for="salary_name" class="control-label">Salary Type</label>
                                 <input type="text" class="form-control" id="salary_name" name="salary_name" required>
                             </div>
                         </div>

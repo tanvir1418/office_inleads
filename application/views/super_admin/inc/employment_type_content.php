@@ -18,7 +18,7 @@
                         </thead>
                         <tbody>
                             <?php $i = 1;
-                            foreach ($this->emm->get_employment_type_list() as $row) : ?>
+                            foreach ($this->cmm->get_employment_type_list() as $row) : ?>
                                 <tr>
                                     <td><?= $i++ ?></td>
                                     <td><?= $row->empl_name ?></td>

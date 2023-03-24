@@ -20,7 +20,7 @@
                             foreach ($this->cmm->get_salary_type_list() as $row) : ?>
                                 <tr>
                                     <td><?= $i++ ?></td>
-                                    <td><?= $row->salary_name ?></td>
+                                    <td><?= $row->slry_type_name ?></td>
                                     
                                     <?php if ($row->status == "ACTIVE") { ?>
                                         <td class="text-success-imp"><strong><?= $row->status ?></strong></td>
@@ -29,16 +29,16 @@
                                     <?php } ?>
 
                                     <td>
-                                        <a class="btn btn-warning text-dark ml-2 edit_salary_modal" data-id="<?= $row->salary_id ?>">
+                                        <a class="btn btn-warning text-dark ml-2 edit_salary_modal" data-id="<?= $row->slry_type_id ?>">
                                             <i class="fas fa-edit"></i> Edit
                                         </a>
                                         <?php
                                         if ($row->status == "ACTIVE") { ?>
-                                            <a onclick="return confirm('Want to deactive salary type?');" href="<?= base_url() ?>super_admin/deactive_salary_type/<?= $row->salary_id ?>" class="btn btn-danger">
+                                            <a onclick="return confirm('Want to deactive salary type?');" href="<?= base_url() ?>super_admin/deactive_salary_type/<?= $row->slry_type_id ?>" class="btn btn-danger">
                                                 <i class="fas fa-times"></i> Deactive
                                             </a>
                                         <?php } else { ?>
-                                            <a href="<?= base_url() ?>super_admin/active_salary_type/<?= $row->salary_id ?>" class="btn btn-success btn-success-imp">
+                                            <a href="<?= base_url() ?>super_admin/active_salary_type/<?= $row->slry_type_id ?>" class="btn btn-success btn-success-imp">
                                                 <i class="fas fa-check"></i> Active
                                             </a>
                                         <?php } ?>

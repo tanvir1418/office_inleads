@@ -233,12 +233,12 @@ $(document).ready(function() {
     });
     
     $('.edit_salary_modal').on('click', function() {
-        let salary_id = $(this).data('id');
+        let slry_type_id = $(this).data('id');
         $.ajax({
             url: `${base_url}super_admin/edit_modal_salary_type_ajx`,
             type: "POST",
             data: {
-                salary_id: salary_id
+                slry_type_id: slry_type_id
             },
             cache: false,
             success: function(result) {
@@ -263,4 +263,24 @@ $(document).ready(function() {
             }
         });
     });
+
+    // Employee salary payment ajax request
+    $("#select_emp_userid").on('change', function() {
+        var emp_user_id = this.value;
+        console.log("Selected Employee User ID: " + emp_user_id);
+        $.ajax({
+            url: `${base_url}super_admin/get_employee_salary_data_ajx`,
+            type: "POST",
+            data: {
+                emp_user_id: emp_user_id
+            },
+            cache: false,
+            success: function(result) {
+                $("#dynamic_employee_data").html(result);
+                console.log("Entered into the success");
+                console.log(result);
+            }
+        });
+    });
+
 });

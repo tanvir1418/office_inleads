@@ -35,3 +35,8 @@
     border: none;
     outline: none;
 }
+
+#employee_salary_table.table td,
+#employee_salary_table.table th{
+    padding: 0.15rem 0.5rem !important;
+}

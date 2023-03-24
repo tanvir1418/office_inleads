@@ -356,15 +356,15 @@ class Category_management_model extends CI_Model {
 
     function create_new_salary_type() {
         $page_name = $this->uri->segment(3);
-        $this->form_validation->set_rules("salary_name", "salary_name", "xss_clean");
+        $this->form_validation->set_rules("slry_type_name", "slry_type_name", "xss_clean");
         if ($this->form_validation->run() == FALSE) {
             echo  $this->upload->display_errors();
             $this->load->view('super_admin/salary_type');
         } else {
-            $salary_id = mt_rand(100, 999);
+            $slry_type_id = mt_rand(100, 999);
             $data_salary = array(
-                'salary_id' => $salary_id,
-                'salary_name' => $this->input->post('salary_name'),
+                'slry_type_id' => $slry_type_id,
+                'slry_type_name' => $this->input->post('slry_type_name'),
                 'status' => 'ACTIVE',
                 'created_at' => date('Y-m-d'),
                 'updated_at' => date('Y-m-d')
@@ -376,49 +376,49 @@ class Category_management_model extends CI_Model {
     }
 
     function active_salary_type() {
-        $salary_id = $this->uri->segment(3);
+        $slry_type_id = $this->uri->segment(3);
         $data_salary = array(
             'status' => 'ACTIVE',
             'updated_at' => date('Y-m-d')
         );
-        $this->db->where('salary_id', $salary_id);
+        $this->db->where('slry_type_id', $slry_type_id);
         $this->db->update('salary_type_list', $data_salary);
         redirect("super_admin/salary_type");
     }
 
     function deactive_salary_type() {
-        $salary_id = $this->uri->segment(3);
+        $slry_type_id = $this->uri->segment(3);
         $data_salary = array(
             'status' => 'DEACTIVE',
             'updated_at' => date('Y-m-d')
         );
-        $this->db->where('salary_id', $salary_id);
+        $this->db->where('slry_type_id', $slry_type_id);
         $this->db->update('salary_type_list', $data_salary);
         redirect("super_admin/salary_type");
     }
 
     function edit_salary_type() {
         $page_name = $this->uri->segment(3);
-        $this->form_validation->set_rules("salary_name", "salary_name", "xss_clean");
+        $this->form_validation->set_rules("slry_type_name", "slry_type_name", "xss_clean");
         if ($this->form_validation->run() == FALSE) {
             echo  $this->upload->display_errors();
             $this->load->view('super_admin/salary_type');
         } else {
-            $salary_id = $this->input->post('salary_id');
+            $slry_type_id = $this->input->post('slry_type_id');
             $data_salary = array(
-                'salary_name' => $this->input->post('salary_name'),
+                'slry_type_name' => $this->input->post('slry_type_name'),
                 'updated_at' => date('Y-m-d')
             );
-            $this->db->where('salary_id', $salary_id);
+            $this->db->where('slry_type_id', $slry_type_id);
             $this->db->update('salary_type_list', $data_salary);
             redirect("super_admin/$page_name");
         }
         redirect("super_admin/salary_type");
     }
 
-    function get_single_salary_type($salary_id) {
+    function get_single_salary_type($slry_type_id) {
         $this->db->order_by("created_at", "DESC");
-        $this->db->where('salary_id', $salary_id);
+        $this->db->where('slry_type_id', $slry_type_id);
         $query = $this->db->get("salary_type_list");
         return $query->result();
     }

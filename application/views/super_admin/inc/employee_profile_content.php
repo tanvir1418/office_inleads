@@ -65,10 +65,9 @@
                             <div class="card-body">
                                 <h6 class="header-title pb-3">Emergency Contact</h6>
                                 <?php
-                                    $rowEmerg = $this->emm->get_employee_emergency_contact_by_userid();
-                                    $rowEmergCount = count($rowEmerg);
+                                $rowEmerg = $this->emm->get_employee_emergency_contact_by_userid();
+                                $rowEmergCount = count($rowEmerg);
                                 ?>
-                                <?php //foreach ($this->emm->get_employee_emergency_contact_by_userid() as $rowEmerg) : ?>
                                 <?php if ($rowEmergCount > 0) : ?>
                                     <ul class="list-unstyled mb-0">
                                         <li class=""><i class="fas fa-user mr-2"></i><?= $rowEmerg[0]->name ?> (<?= $rowEmerg[0]->relation ?>)</li>
@@ -76,7 +75,6 @@
                                         <li class="mt-2"><i class="fas fa-map-marker-alt mt-2 mr-2"></i><?= $rowEmerg[0]->address ?></li>
                                     </ul>
                                 <?php endif; ?>
-                                <?php //endforeach; ?>
                             </div>
                         </div>
                     </div>
@@ -212,7 +210,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <div class="tab-pane" id="leave_details">
                                     <div class="row">
                                         <div class="col-lg-12">
@@ -256,26 +254,37 @@
                                 <!-- table purchase List -->
                                 <div class="table-responsive mb-0" data-pattern="priority-columns">
                                     <table id="tech-companies-1" class="table table-striped focus-on">
-                                        <thead>
+                                    <thead>
                                             <tr>
                                                 <th>#</th>
-                                                <th>CP-No</th>
-                                                <th>Field Worker</th>
-                                                <th>Product</th>
-                                                <th>Purchase</th>
-                                                <th>Payment</th>
-                                                <th>Due</th>
+                                                <th>Month</th>
+                                                <th>Year</th>
+                                                <th>Amount</th>
+                                                <th>Status</th>
+                                                <th>Pay Date</th>
+                                                <th>Salary Type</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php //$i = 1;
-                                            //foreach ($this->urm->getonerow_purchase() as $row) : 
-                                            ?>
-                                            <tr>
+                                            <?php $slry_i = 1;
+                                            foreach ($this->amm->get_employee_current_year_salary_history() as $row) : ?>
+                                                <tr>
+                                                    <td><?= $slry_i++ ?></td>
+                                                <?php
+                                                    $this->db->where('month_no', $row->month_no);
+                                                    $month_name = $this->db->get("months")->row('month_name');
 
-                                            </tr>
-                                            <?php //endforeach; 
-                                            ?>
+                                                    $this->db->where('slry_type_id', $row->slry_type_id);
+                                                    $slry_type_name = $this->db->get("salary_type_list")->row('slry_type_name');
+                                                ?>
+                                                    <td><?= $month_name ?></td>
+                                                    <td><?= $row->year ?></td>
+                                                    <td><?= $row->salary_amount ?></td>
+                                                    <td><?= $row->salary_status ?></td>
+                                                    <td><?= implode(" - ", array_reverse(explode(" - ",$row->pay_date))) ?></td>
+                                                    <td><?= $slry_type_name ?></td>
+                                                </tr>
+                                            <?php endforeach; ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -296,23 +305,34 @@
                                         <thead>
                                             <tr>
                                                 <th>#</th>
-                                                <th>CP-No</th>
-                                                <th>Field Worker</th>
-                                                <th>Product</th>
-                                                <th>Purchase</th>
-                                                <th>Payment</th>
-                                                <th>Due</th>
+                                                <th>Month</th>
+                                                <th>Year</th>
+                                                <th>Amount</th>
+                                                <th>Status</th>
+                                                <th>Pay Date</th>
+                                                <th>Salary Type</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php //$i = 1;
-                                            //foreach ($this->urm->getonerow_cp_history() as $row) : 
-                                            ?>
-                                            <tr>
+                                            <?php $slry_i = 1;
+                                            foreach ($this->amm->get_employee_salary_history() as $row) : ?>
+                                                <tr>
+                                                    <td><?= $slry_i++ ?></td>
+                                                <?php
+                                                    $this->db->where('month_no', $row->month_no);
+                                                    $month_name = $this->db->get("months")->row('month_name');
 
-                                            </tr>
-                                            <?php //endforeach; 
-                                            ?>
+                                                    $this->db->where('slry_type_id', $row->slry_type_id);
+                                                    $slry_type_name = $this->db->get("salary_type_list")->row('slry_type_name');
+                                                ?>
+                                                    <td><?= $month_name ?></td>
+                                                    <td><?= $row->year ?></td>
+                                                    <td><?= $row->salary_amount ?></td>
+                                                    <td><?= $row->salary_status ?></td>
+                                                    <td><?= implode(" - ", array_reverse(explode(" - ",$row->pay_date))) ?></td>
+                                                    <td><?= $slry_type_name ?></td>
+                                                </tr>
+                                            <?php endforeach; ?>
                                         </tbody>
                                     </table>
                                 </div>

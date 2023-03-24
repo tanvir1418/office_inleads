@@ -12,8 +12,8 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group" id="edit_salary_type_input">
-                                <label for="salary_name" class="control-label">Salary Type</label>
-                                <input type="text" class="form-control" id="salary_name" name="salary_name" required>
+                                <label for="slry_type_name" class="control-label">Salary Type</label>
+                                <input type="text" class="form-control" id="slry_type_name" name="slry_type_name" required>
                             </div>
                         </div>
                     </div>

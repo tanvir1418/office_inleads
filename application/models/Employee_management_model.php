@@ -373,6 +373,12 @@ class Employee_management_model  extends CI_Model {
         return $query->result();
     }
 
+    function get_employee_by_userid($emp_user_id) {
+        $this->db->where('emp_user_id', $emp_user_id);
+        $query = $this->db->get("employee_info");
+        return $query->result();
+    }
+
     function get_employee_personal_details_by_userid() {
         $emp_user_id = $this->uri->segment(3);
         $this->db->where('emp_user_id', $emp_user_id);

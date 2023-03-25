@@ -111,6 +111,7 @@ class Employee_management_model  extends CI_Model {
                 'employee_id' => $this->input->post('employee_id'),
                 'division' => $this->input->post('division'),
                 'date_of_joining' => $this->input->post('date_of_joining'),
+                'appointed_date' => $this->input->post('date_of_joining'),
                 'dept_id' => $this->input->post('dept_id'),
                 'location' => $this->input->post('location'),
                 'empl_id' => $this->input->post('empl_id'),

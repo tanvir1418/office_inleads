@@ -75,6 +75,19 @@ class Super_admin extends CI_Controller {
         $this->load->view('super_admin/employee_edit_details');
     }
 
+    public function employee_change_status() {
+        $this->load->library('session');
+        $this->load->model('Employee_management_model', 'emm');
+        $this->load->model('Category_management_model', 'cmm');
+        $this->load->view('super_admin/employee_change_status');
+    }
+
+    public function employee_promotion() {
+        $this->load->library('session');
+        $this->load->model('Admin_management_model', 'amm');
+        $this->amm->employee_promotion();
+    }
+
     public function update_employee_details() {
         $this->load->library('session');
         $this->load->model('Employee_management_model', 'emm');

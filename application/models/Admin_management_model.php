@@ -77,4 +77,49 @@ class Admin_management_model extends CI_Model {
 
         redirect($previous_url);
     }
+
+    public function employee_promotion(){
+        $this->load->library("form_validation");
+        $this->form_validation->set_rules("emp_user_id", "emp_user_id", "xss_clean");
+        $this->form_validation->set_rules("organization", "organization", "xss_clean");
+        $this->form_validation->set_rules("designation", "designation", "xss_clean");
+        $this->form_validation->set_rules("start_date", "start_date", "xss_clean");
+        $this->form_validation->set_rules("end_date", "end_date", "xss_clean");
+        $this->form_validation->set_rules("new_dsgn_id", "new_dsgn_id", "xss_clean");
+        $this->form_validation->set_rules("new_appointed_date", "new_appointed_date", "xss_clean");
+        $this->form_validation->set_rules("promotion_check", "promotion_check", "xss_clean");
+
+        $emp_user_id = $this->input->post('emp_user_id');
+
+        if ($this->form_validation->run() == FALSE) {
+            echo  $this->upload->display_errors();
+            redirect("super_admin/employee_change_status/$emp_user_id");
+        } else {
+
+            $promotion_check = $this->input->post('promotion_check');
+
+            if (isset($promotion_check) && $promotion_check == 'on') {
+                $data_emp_history = array(
+                    'emp_user_id' => $emp_user_id,
+                    'organization' => $this->input->post('organization'),
+                    'designation' => $this->input->post('designation'),
+                    'start_date' => $this->input->post('start_date'),
+                    'end_date' => $this->input->post('end_date')
+                );
+                $this->db->insert('emp_employment_history', $data_emp_history);
+
+                $data_employee = array( 
+                    'dsgn_id' => $this->input->post('new_dsgn_id'),
+                    'appointed_date' => $this->input->post('new_appointed_date'),
+                    'updated_at' => date('Y-m-d')
+                );
+    
+                $this->db->where('emp_user_id', $emp_user_id);
+                $this->db->update('employee_info', $data_employee);
+
+                redirect("super_admin/employee_profile/$emp_user_id");
+            }    
+        }
+
+    }
 }

@@ -1,9 +1,9 @@
-<?php 
-    $emp_user_id = $this->uri->segment(3);
-    $emp_dsgn_id = '';
-    $appointed_date = '';
-    $emp_designation = '';
-    $organization = 'Inleads IT Solution Ltd.';
+<?php
+$emp_user_id = $this->uri->segment(3);
+$emp_dsgn_id = '';
+$appointed_date = '';
+$emp_designation = '';
+$organization = 'Inleads IT Solution Ltd.';
 ?>
 <div class="row-wrapper">
     <div class="card">
@@ -25,24 +25,24 @@
                             </p>
                             <h5 class='mt-2 mb-0'><?= $row->employee_name ?></h5>
                             <?php
-                                $emp_dsgn_id = $row->dsgn_id;
-                                $this->db->where('dsgn_id', $row->dsgn_id);
-                                $designation = $this->db->get("designation_list")->row('dsgn_name');
-                                $emp_designation = $designation;
-                    
-                                $this->db->where('dept_id', $row->dept_id);
-                                $department = $this->db->get("department_list")->row('dept_name');
-                    
-                                $this->db->where('empl_id', $row->empl_id);
-                                $employment_type = $this->db->get("employment_type_list")->row('empl_name');
-                                
-                                $this->db->where('idcard_id', $row->idcard_id);
-                                $idcard_id = $this->db->get("idcard_type_list")->row('idcard_name');
-                                $employee_id = $row->employee_id;
-                                $employee_idcard = $idcard_id . "-" . $employee_id;
-                    
-                                $date_of_joining = implode("-",array_reverse(explode("-",$row->date_of_joining)));
-                                $appointed_date = $row->appointed_date;
+                            $emp_dsgn_id = $row->dsgn_id;
+                            $this->db->where('dsgn_id', $row->dsgn_id);
+                            $designation = $this->db->get("designation_list")->row('dsgn_name');
+                            $emp_designation = $designation;
+
+                            $this->db->where('dept_id', $row->dept_id);
+                            $department = $this->db->get("department_list")->row('dept_name');
+
+                            $this->db->where('empl_id', $row->empl_id);
+                            $employment_type = $this->db->get("employment_type_list")->row('empl_name');
+
+                            $this->db->where('idcard_id', $row->idcard_id);
+                            $idcard_id = $this->db->get("idcard_type_list")->row('idcard_name');
+                            $employee_id = $row->employee_id;
+                            $employee_idcard = $idcard_id . "-" . $employee_id;
+
+                            $date_of_joining = implode("-", array_reverse(explode("-", $row->date_of_joining)));
+                            $appointed_date = $row->appointed_date;
                             ?>
                             <small class='text-muted'><?= $designation ?></small>
                         </div>
@@ -55,12 +55,18 @@
                             <small class='text-muted'><strong>Working Status:</strong> <?= $row->status ?></small><br>
                         </div>
                     <?php endforeach; ?>
+                    <hr>
+                    <div class="text-center">
+                        <a onclick="return confirm('Confirm to depart employee?');" href="<?= base_url() ?>super_admin/employee_depart/<?= $row->emp_user_id ?>" class="btn btn-danger mt-0 tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Depart Employee">
+                            Depart Employee
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
         <div class='col-lg-12 col-xl-8'>
             <div class='card m-b-30'>
-            <div class='card-body'>
+                <div class='card-body'>
                     <div class='text-center mb-4'>
                         <h5 style='text-decoration: underline;'>Employee Promotion</h5>
                     </div>
@@ -91,7 +97,7 @@
                                 <select class='form-control' name='new_dsgn_id' id='new_dsgn_id' required>
                                     <option value='' selected='' disabled='' hidden=''>Choose here</option>
                                     <?php foreach ($this->cmm->get_active_designation_list() as $row) : ?>
-                                        <?php if($row->dsgn_id !== $emp_dsgn_id) : ?>
+                                        <?php if ($row->dsgn_id !== $emp_dsgn_id) : ?>
                                             <option value="<?= $row->dsgn_id ?>"><?= $row->dsgn_name ?></option>
                                         <?php endif ?>
                                     <?php endforeach; ?>

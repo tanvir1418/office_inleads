@@ -36,8 +36,12 @@
                                 <small class="text-muted"><?= $designation ?></small>
                                 <br>
                                 <a class="btn btn-dark text-white mt-2" href="<?= base_url() ?>super_admin/employee_profile/<?= $rowEmp->emp_user_id ?>">Profile</a>
-                                <a class="btn btn-warning text-white mt-2" href="<?= base_url() ?>super_admin/employee_edit_details/<?= $rowEmp->emp_user_id ?>">Edit Details</a>
-                                <a class="btn btn-danger text-white mt-2" href="<?= base_url() ?>super_admin/employee_change_status/<?= $rowEmp->emp_user_id ?>">Change Status</a>
+
+                                <?php if($rowEmp->status == "WORKING"): ?>
+                                    <a class="btn btn-warning text-white mt-2" href="<?= base_url() ?>super_admin/employee_edit_details/<?= $rowEmp->emp_user_id ?>">Edit Details</a>
+                                    <a class="btn btn-danger text-white mt-2" href="<?= base_url() ?>super_admin/employee_change_status/<?= $rowEmp->emp_user_id ?>">Change Status</a>
+                                <?php endif ?>
+                                
                             <?php endforeach; ?>
                         </div>
                     </div>

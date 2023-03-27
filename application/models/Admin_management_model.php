@@ -120,6 +120,18 @@ class Admin_management_model extends CI_Model {
                 redirect("super_admin/employee_profile/$emp_user_id");
             }    
         }
-
     }
+
+    public function employee_depart(){
+        $emp_user_id = $this->uri->segment(3);
+        $data_employee = array( 
+            'status' => 'DEPARTED',
+            'updated_at' => date('Y-m-d')
+        );
+        $this->db->where('emp_user_id', $emp_user_id);
+        $this->db->update('employee_info', $data_employee);
+        redirect("super_admin/employee_profile/$emp_user_id");
+    }
+
+
 }

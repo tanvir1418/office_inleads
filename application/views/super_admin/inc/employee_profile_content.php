@@ -35,8 +35,10 @@
                                     </a>
                                 </p>
                                 <a class="btn btn-dark btn-block text-white" href="<?= base_url() ?>super_admin/employee_full_details/<?= $rowEmp->emp_user_id ?>">Full Details</a>
-                                <a class="btn btn-warning btn-block text-white" href="<?= base_url() ?>super_admin/employee_edit_details/<?= $rowEmp->emp_user_id ?>">Edit Details</a>
-                                <a class="btn btn-danger btn-block text-white" href="<?= base_url() ?>super_admin/employee_change_status/<?= $rowEmp->emp_user_id ?>">Change Status</a>
+                                <?php if ($rowEmp->status == 'WORKING') : ?>
+                                    <a class="btn btn-warning btn-block text-white" href="<?= base_url() ?>super_admin/employee_edit_details/<?= $rowEmp->emp_user_id ?>">Edit Details</a>
+                                    <a class="btn btn-danger btn-block text-white" href="<?= base_url() ?>super_admin/employee_change_status/<?= $rowEmp->emp_user_id ?>">Change Status</a>
+                                <?php endif; ?>
                             <?php endforeach; ?>
                         </div>
                     </div>
@@ -133,7 +135,11 @@
                                                     $employment_type = $this->db->get("employment_type_list")->row('empl_name');
                                                     ?>
                                                     <li><b>Employment Type:</b> <?= $employment_type ?></li>
-                                                    <li><b>Status:</b> <?= $rowEmp2->status ?></li>
+                                                    <?php if ($rowEmp2->status == "WORKING") : ?>
+                                                        <li><b>Status:</b> <?= $rowEmp2->status ?></li>
+                                                    <?php else : ?>
+                                                        <li><b>Status:</b> <span class="bg-danger text-white p-1 rounded"><?= $rowEmp2->status ?></span></li>
+                                                    <?php endif ?>
                                                     <li><b>Account Created:</b> <?= implode("-", array_reverse(explode("-", $rowEmp2->created_at))) ?></li>
                                                 </ul>
                                             <?php endforeach; ?>
@@ -254,7 +260,7 @@
                                 <!-- table purchase List -->
                                 <div class="table-responsive mb-0" data-pattern="priority-columns">
                                     <table id="tech-companies-1" class="table table-striped focus-on">
-                                    <thead>
+                                        <thead>
                                             <tr>
                                                 <th>#</th>
                                                 <th>Month</th>
@@ -270,18 +276,18 @@
                                             foreach ($this->amm->get_employee_current_year_salary_history() as $row) : ?>
                                                 <tr>
                                                     <td><?= $slry_i++ ?></td>
-                                                <?php
+                                                    <?php
                                                     $this->db->where('month_no', $row->month_no);
                                                     $month_name = $this->db->get("months")->row('month_name');
 
                                                     $this->db->where('slry_type_id', $row->slry_type_id);
                                                     $slry_type_name = $this->db->get("salary_type_list")->row('slry_type_name');
-                                                ?>
+                                                    ?>
                                                     <td><?= $month_name ?></td>
                                                     <td><?= $row->year ?></td>
                                                     <td><?= $row->salary_amount ?></td>
                                                     <td><?= $row->salary_status ?></td>
-                                                    <td><?= implode(" - ", array_reverse(explode(" - ",$row->pay_date))) ?></td>
+                                                    <td><?= implode(" - ", array_reverse(explode(" - ", $row->pay_date))) ?></td>
                                                     <td><?= $slry_type_name ?></td>
                                                 </tr>
                                             <?php endforeach; ?>
@@ -318,18 +324,18 @@
                                             foreach ($this->amm->get_employee_salary_history() as $row) : ?>
                                                 <tr>
                                                     <td><?= $slry_i++ ?></td>
-                                                <?php
+                                                    <?php
                                                     $this->db->where('month_no', $row->month_no);
                                                     $month_name = $this->db->get("months")->row('month_name');
 
                                                     $this->db->where('slry_type_id', $row->slry_type_id);
                                                     $slry_type_name = $this->db->get("salary_type_list")->row('slry_type_name');
-                                                ?>
+                                                    ?>
                                                     <td><?= $month_name ?></td>
                                                     <td><?= $row->year ?></td>
                                                     <td><?= $row->salary_amount ?></td>
                                                     <td><?= $row->salary_status ?></td>
-                                                    <td><?= implode(" - ", array_reverse(explode(" - ",$row->pay_date))) ?></td>
+                                                    <td><?= implode(" - ", array_reverse(explode(" - ", $row->pay_date))) ?></td>
                                                     <td><?= $slry_type_name ?></td>
                                                 </tr>
                                             <?php endforeach; ?>

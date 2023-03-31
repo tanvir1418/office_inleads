@@ -47,7 +47,7 @@
                                     <td><?= ucwords(preg_replace('/\_+/', ' ', $row->leave_type)); ?></td>
                                     <td><?= implode("-", array_reverse(explode("-", $row->leave_date_from))) ?></td>
                                     <td><?= implode("-", array_reverse(explode("-", $row->leave_date_to))) ?></td>
-                                    <td><?= implode("-", array_reverse(explode("-", $row->leave_total_days))) ?></td>
+                                    <td><?= $row->leave_total_days ?></td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>

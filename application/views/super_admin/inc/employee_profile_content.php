@@ -81,6 +81,27 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card m-b-30">
+                            <div class="card-body">
+                                <h6 class="header-title pb-1">Leave Status <strong>(<?= date('Y')?>)</strong></h6>
+                                <?php
+                                $row = $this->amm->get_employee_paid_leave_details_by_segment();
+                                $rowLeaveCount = count($row);
+                                ?>
+                                <?php if ($rowLeaveCount == 1) : ?>
+                                    <ul class="list-unstyled mb-0">
+                                        <li class=""><strong>Casual:</strong> <?= $row[0]->casual_leave ?> (Cons: <?= $row[0]->casual_consumed ?>)</li>
+                                        <li class="mt-2"><strong>Sick:</strong> <?= $row[0]->sick_leave ?> (Cons: <?= $row[0]->sick_consumed ?>)</li>
+                                        <li class="mt-2"><strong>Maternal:</strong> <?= $row[0]->maternal_leave ?> (Cons: <?= $row[0]->maternal_consumed ?>)</li>
+                                    </ul>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div class="col-lg-12 col-xl-9">
@@ -224,21 +245,21 @@
                                                 <thead>
                                                     <tr>
                                                         <th>#</th>
-                                                        <th>Organization</th>
-                                                        <th>Designation</th>
-                                                        <th>Start Date</th>
-                                                        <th>End Date</th>
+                                                        <th>Leave Type</th>
+                                                        <th>Leave From</th>
+                                                        <th>Leave To</th>
+                                                        <th>Total Days</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <?php $i = 1;
-                                                    foreach ($this->emm->get_employee_history_by_userid() as $row) : ?>
+                                                    foreach ($this->amm->get_employee_leave_application() as $row) : ?>
                                                         <tr>
                                                             <td><?= $i++ ?></td>
-                                                            <td><?= $row->organization ?></td>
-                                                            <td><?= $row->designation ?></td>
-                                                            <td><?= implode("-", array_reverse(explode("-", $row->start_date))) ?></td>
-                                                            <td><?= implode("-", array_reverse(explode("-", $row->end_date))) ?></td>
+                                                            <td><?= ucwords(preg_replace('/\_+/', ' ', $row->leave_type)); ?></td>
+                                                            <td><?= implode("-", array_reverse(explode("-", $row->leave_date_from))) ?></td>
+                                                            <td><?= implode("-", array_reverse(explode("-", $row->leave_date_to))) ?></td>
+                                                            <td><strong><?= $row->leave_total_days ?></strong></td>
                                                         </tr>
                                                     <?php endforeach; ?>
                                                 </tbody>

@@ -293,4 +293,22 @@ class Admin_management_model extends CI_Model {
         $query = $this->db->get("emp_leave_application");
         return $query->result();
     }
+
+    public function get_employee_leave_application(){
+        $emp_user_id = $this->uri->segment(3);
+        $this->db->order_by("created_at", "DESC");
+        $this->db->where("emp_user_id", $emp_user_id);
+        $query = $this->db->get("emp_leave_application");
+        return $query->result();
+    }
+
+    public function get_employee_paid_leave_details_by_segment() {
+        $emp_user_id = $this->uri->segment(3);
+        $current_year = date('Y');
+        $this->db->order_by("leave_year", "DESC");
+        $this->db->where('emp_user_id', $emp_user_id);
+        $this->db->where('leave_year', $current_year);
+        $query = $this->db->get("emp_paid_leave_details");
+        return $query->result();
+    }
 }

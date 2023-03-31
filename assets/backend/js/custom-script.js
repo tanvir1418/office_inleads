@@ -267,7 +267,6 @@ $(document).ready(function() {
     // Employee salary payment ajax request
     $("#select_emp_userid").on('change', function() {
         var emp_user_id = this.value;
-        console.log("Selected Employee User ID: " + emp_user_id);
         $.ajax({
             url: `${base_url}super_admin/get_employee_salary_data_ajx`,
             type: "POST",
@@ -277,10 +276,73 @@ $(document).ready(function() {
             cache: false,
             success: function(result) {
                 $("#dynamic_employee_data").html(result);
-                console.log("Entered into the success");
-                console.log(result);
             }
         });
+    });
+
+    // Employee Leave Management ajax request
+    $("#leave_emp_userid").on('change', function() {
+        let emp_user_id = this.value;
+        // console.log("Selected Employee User ID: " + emp_user_id);
+        $.ajax({
+            url: `${base_url}super_admin/get_employee_leave_data_ajx`,
+            type: "POST",
+            data: {
+                emp_user_id: emp_user_id
+            },
+            cache: false,
+            success: function(result) {
+                $("#employee_leave_info").html(result);
+            }
+        });
+    });
+
+    // Employee Leave Application
+    $(document).on('change', '#leave_date_from', function() {
+        let leave_date_from = this.value;
+        let leave_date_to = $("#leave_date_to").val();
+
+        if(leave_date_to != ""){
+            // To set two dates to two variables
+            let dateFrom = new Date(leave_date_from);
+            let dateTo = new Date(leave_date_to);
+
+            // To calculate the time difference of two dates
+            let Difference_In_Time = dateTo.getTime() - dateFrom.getTime();
+
+            // To calculate the no. of days between two dates
+            let Difference_In_Days = Number(Difference_In_Time / (1000 * 3600 * 24));
+
+            if(Difference_In_Days >= 0){
+                leave_total = Difference_In_Days + 1;
+                $("#leave_total_days").val(leave_total);
+            }else{
+                $("#leave_date_to").val("");
+                $("#leave_total_days").val("");
+            }
+        }
+    });
+
+    $(document).on('change', '#leave_date_to', function() {
+        let leave_date_to = this.value;
+        let leave_date_from = $("#leave_date_from").val();
+
+        if(leave_date_from != ""){
+            let dateFrom = new Date(leave_date_from);
+            let dateTo = new Date(leave_date_to);
+
+            let Difference_In_Time = dateTo.getTime() - dateFrom.getTime();
+
+            let Difference_In_Days = Number(Difference_In_Time / (1000 * 3600 * 24));
+
+            if(Difference_In_Days >= 0){
+                leave_total = Difference_In_Days + 1;
+                $("#leave_total_days").val(leave_total);
+            }else{
+                $("#leave_date_from").val("");
+                $("#leave_total_days").val("");
+            }
+        }
     });
 
 });

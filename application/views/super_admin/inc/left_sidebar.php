@@ -40,6 +40,7 @@
                     <ul class="list-unstyled">
                         <li><a href="<?= base_url() ?>super_admin/leave_application"><i class="fas fa-file-medical"></i>Leave Application</a></li>
                         <li><a href="<?= base_url() ?>super_admin/leave_list"><i class="fas fa-file-alt"></i>Leave List</a></li>
+                        <li><a href="<?= base_url() ?>super_admin/manage_paid_leave"><i class="fas fa-file-alt"></i>Manage Paid Leave</a></li>
                     </ul>
                 </li>
                 

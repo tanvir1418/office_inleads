@@ -106,150 +106,150 @@ class Super_admin extends CI_Controller {
         $this->emm->update_personal_details();
     }
 
-    public function create_employment_history(){
+    public function create_employment_history() {
         $this->load->library('session');
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->create_employment_history();
     }
 
-    public function update_employment_history(){
+    public function update_employment_history() {
         $this->load->library('session');
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->update_employment_history();
     }
 
-    public function delete_employment_history(){
+    public function delete_employment_history() {
         $this->load->library('session');
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->delete_employment_history();
     }
 
-    public function create_academic_qualification(){
+    public function create_academic_qualification() {
         $this->load->library('session');
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->create_academic_qualification();
     }
 
-    public function update_academic_qualification(){
+    public function update_academic_qualification() {
         $this->load->library('session');
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->update_academic_qualification();
     }
 
-    public function delete_academic_qualification(){
+    public function delete_academic_qualification() {
         $this->load->library('session');
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->delete_academic_qualification();
     }
 
-    public function create_training_details(){
+    public function create_training_details() {
         $this->load->library('session');
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->create_training_details();
     }
 
-    public function update_training_details(){
+    public function update_training_details() {
         $this->load->library('session');
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->update_training_details();
     }
 
-    public function delete_training_details(){
+    public function delete_training_details() {
         $this->load->library('session');
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->delete_training_details();
     }
 
-    public function create_prof_certification(){
+    public function create_prof_certification() {
         $this->load->library('session');
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->create_prof_certification();
     }
 
-    public function update_prof_certification(){
+    public function update_prof_certification() {
         $this->load->library('session');
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->update_prof_certification();
     }
 
-    public function delete_prof_certification(){
+    public function delete_prof_certification() {
         $this->load->library('session');
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->delete_prof_certification();
     }
 
-    public function create_emergency_contact(){
+    public function create_emergency_contact() {
         $this->load->library('session');
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->create_emergency_contact();
     }
 
-    public function update_emergency_contact(){
+    public function update_emergency_contact() {
         $this->load->library('session');
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->update_emergency_contact();
     }
 
-    public function delete_emergency_contact(){
+    public function delete_emergency_contact() {
         $this->load->library('session');
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->delete_emergency_contact();
     }
 
-    public function create_reference(){
+    public function create_reference() {
         $this->load->library('session');
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->create_reference();
     }
 
-    public function update_reference(){
+    public function update_reference() {
         $this->load->library('session');
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->update_reference();
     }
 
-    public function delete_reference(){
+    public function delete_reference() {
         $this->load->library('session');
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->delete_reference();
     }
 
-    public function create_children_details(){
+    public function create_children_details() {
         $this->load->library('session');
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->create_children_details();
     }
 
-    public function update_children_details(){
+    public function update_children_details() {
         $this->load->library('session');
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->update_children_details();
     }
 
-    public function delete_children_details(){
+    public function delete_children_details() {
         $this->load->library('session');
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->delete_children_details();
     }
 
-    public function create_society_details(){
+    public function create_society_details() {
         $this->load->library('session');
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->create_society_details();
     }
 
-    public function update_society_details(){
+    public function update_society_details() {
         $this->load->library('session');
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->update_society_details();
     }
 
-    public function delete_society_details(){
+    public function delete_society_details() {
         $this->load->library('session');
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->delete_society_details();
     }
-    
+
     // Salary Functions Starts
     public function add_salary() {
         $this->load->library('session');
@@ -265,12 +265,12 @@ class Super_admin extends CI_Controller {
         $this->load->view('super_admin/salary_details');
     }
 
-    public function insert_salary(){
+    public function insert_salary() {
         $this->load->library('session');
         $this->load->model('Admin_management_model', 'amm');
         $this->amm->insert_salary();
     }
-    
+
     public function get_employee_salary_data_ajx() {
         $this->load->library('session');
         $this->load->model('Category_management_model', 'cmm');
@@ -288,7 +288,7 @@ class Super_admin extends CI_Controller {
 
         foreach ($this->emm->get_employee_by_userid($emp_user_id) as $row) {
             $employee_name = $row->employee_name;
-            
+
             $this->db->where('dsgn_id', $row->dsgn_id);
             $designation = $this->db->get("designation_list")->row('dsgn_name');
 
@@ -297,21 +297,21 @@ class Super_admin extends CI_Controller {
 
             $this->db->where('empl_id', $row->empl_id);
             $employment_type = $this->db->get("employment_type_list")->row('empl_name');
-            
+
             $this->db->where('idcard_id', $row->idcard_id);
             $idcard_id = $this->db->get("idcard_type_list")->row('idcard_name');
             $employee_id = $row->employee_id;
             $employee_idcard = $idcard_id . "-" . $employee_id;
 
             $employee_image = $row->image;
-            $date_of_joining = implode("-",array_reverse(explode("-",$row->date_of_joining)));
+            $date_of_joining = implode("-", array_reverse(explode("-", $row->date_of_joining)));
         }
 
         $salary_row_data = '';
         $slry_i = 1;
-        
+
         $employee_already_paid_month_no = [];
-        
+
         foreach ($this->amm->get_employee_current_year_salary($emp_user_id) as $row) {
             $this->db->where('month_no', $row->month_no);
             $month_name = $this->db->get("months")->row('month_name');
@@ -326,7 +326,7 @@ class Super_admin extends CI_Controller {
                 <td>$row->year</td>
                 <td>$row->salary_amount</td>
                 <td>$row->salary_status</td>
-                <td>".implode("-", array_reverse(explode("-",$row->pay_date)))."</td>
+                <td>" . implode("-", array_reverse(explode("-", $row->pay_date))) . "</td>
                 <td>$slry_type_name</td>
             </tr>";
             $slry_i++;
@@ -334,7 +334,7 @@ class Super_admin extends CI_Controller {
 
         $select_payment_month_select = '';
         foreach ($this->amm->get_months_list() as $row) {
-            if(!in_array($row->month_no, $employee_already_paid_month_no)){
+            if (!in_array($row->month_no, $employee_already_paid_month_no)) {
                 $select_payment_month_select .= "<option value='$row->month_no'>$row->month_name</option>";
             }
         }
@@ -352,7 +352,7 @@ class Super_admin extends CI_Controller {
                     </div>
                     <div class='text-center'>
                         <p class='text-muted mb-2 p-2'>
-                            <img src='".base_url()."uploads/photos/$employee_image' alt='$employee_name' class='img-fluid rounded-circle w-80'>
+                            <img src='" . base_url() . "uploads/photos/$employee_image' alt='$employee_name' class='img-fluid rounded-circle w-80'>
                         </p>
                         <h5 class='mt-2 mb-0'>$employee_name</h5>
                         <small class='text-muted'>$designation</small>
@@ -396,7 +396,7 @@ class Super_admin extends CI_Controller {
                     <div class='text-center mb-4'>
                         <h5 style='text-decoration: underline;'>Pay Salary</h5>
                     </div>
-                    <form action='".base_url()."super_admin/insert_salary' method='post' enctype='multipart/form-data'>
+                    <form action='" . base_url() . "super_admin/insert_salary' method='post' enctype='multipart/form-data'>
                         <div class='form-row'>
                             <input type='hidden' name='emp_user_id' value='$emp_user_id'>
                             <div class='form-group col'>
@@ -443,10 +443,10 @@ class Super_admin extends CI_Controller {
                 </div>
             </div>
         </div>";
-        
+
     }
 
-    
+
     // Salary Functions Ends
 
     // Department Types Starts
@@ -474,7 +474,7 @@ class Super_admin extends CI_Controller {
         $this->cmm->deactive_department();
     }
 
-    public function edit_modal_department_ajx(){
+    public function edit_modal_department_ajx() {
         $this->load->library('session');
         $this->load->model('Category_management_model', 'cmm');
         $dept_id = $this->input->post('dept_id');
@@ -519,7 +519,7 @@ class Super_admin extends CI_Controller {
         $this->cmm->deactive_designation();
     }
 
-    public function edit_modal_designation_ajx(){
+    public function edit_modal_designation_ajx() {
         $this->load->library('session');
         $this->load->model('Category_management_model', 'cmm');
         $dsgn_id = $this->input->post('dsgn_id');
@@ -563,7 +563,7 @@ class Super_admin extends CI_Controller {
         $this->cmm->deactive_idcard_type();
     }
 
-    public function edit_modal_idcard_type_ajx(){
+    public function edit_modal_idcard_type_ajx() {
         $this->load->library('session');
         $this->load->model('Category_management_model', 'cmm');
         $idcard_id = $this->input->post('idcard_id');
@@ -608,7 +608,7 @@ class Super_admin extends CI_Controller {
         $this->cmm->deactive_employment_type();
     }
 
-    public function edit_modal_employment_type_ajx(){
+    public function edit_modal_employment_type_ajx() {
         $this->load->library('session');
         $this->load->model('Category_management_model', 'cmm');
         $empl_id = $this->input->post('empl_id');
@@ -652,7 +652,7 @@ class Super_admin extends CI_Controller {
         $this->cmm->deactive_salary_type();
     }
 
-    public function edit_modal_salary_type_ajx(){
+    public function edit_modal_salary_type_ajx() {
         $this->load->library('session');
         $this->load->model('Category_management_model', 'cmm');
         $slry_type_id = $this->input->post('slry_type_id');
@@ -670,4 +670,139 @@ class Super_admin extends CI_Controller {
         $this->cmm->edit_salary_type();
     }
     // Salary Types Functions Ends
+
+    // Leave Application Functionality Starts
+    public function leave_application() {
+        $this->load->library('session');
+        $this->load->model('Employee_management_model', 'emm');
+        $this->load->model('Admin_management_model', 'amm');
+        $this->load->view('super_admin/leave_application');
+    }
+
+    public function manage_paid_leave() {
+        $this->load->library('session');
+        $this->load->model('Employee_management_model', 'emm');
+        $this->load->model('Admin_management_model', 'amm');
+        $this->load->view('super_admin/manage_paid_leave');
+    }
+
+    public function add_paid_leave() {
+        $this->load->library('session');
+        $this->load->model('Admin_management_model', 'amm');
+        $this->amm->add_paid_leave();
+    }
+
+    public function get_employee_leave_data_ajx() {
+        $this->load->library('session');
+        $this->load->model('Admin_management_model', 'amm');
+
+        $emp_user_id = $this->input->post('emp_user_id');
+
+        $this->db->where('emp_user_id', $emp_user_id);
+        $employee_name = $this->db->get("employee_info")->row('employee_name');
+        $employee_id = $this->db->get("employee_info")->row('employee_id');
+        $idcard_id = $this->db->get("employee_info")->row('idcard_id');
+        
+        $this->db->where('idcard_id', $idcard_id);
+        $idcard_name = $this->db->get("idcard_type_list")->row('idcard_name');
+
+        $employee_id_card = $idcard_name.'-'.$employee_id;
+
+        foreach ($this->amm->get_single_emp_paid_leave_details($emp_user_id) as $row) {
+            
+            echo "<div class='row mt-4'>
+            <div class='col-md-4'>
+                <div class='text-center mb-4'>
+                    <h5 style='text-decoration: underline;'>Employment Details</h5>
+                </div>
+
+                <form action='".base_url()."super_admin/add_leave_application' method='post' enctype='multipart/form-data'>
+                    <input type='hidden' name='emp_user_id' value='$row->emp_user_id'>
+                    <div class='form-group'>
+                        <label for='employee_name'>Employee Name:</label>
+                        <input type='text' class='form-control' id='employee_name' value='$employee_name (ID: $employee_id_card)' readonly>
+                    </div>
+                    <div class='form-group'>
+                        <label for='leave_type'>Leave Type:</label>
+                        <select class='form-control' name='leave_type' id='leave_type' required>
+                            <option value='' selected='' disabled='' hidden=''>Choose here</option>
+                            <option value='casual_leave'>Casual Leave</option>
+                            <option value='sick_leave'>Sick Leave</option>
+                            <option value='maternal_leave'>Maternal Leave</option>
+                        </select>
+                    </div>
+                    <div class='form-group'>
+                        <label for='leave_date_from'>Leave From:</label>
+                        <input type='date' class='form-control' name='leave_date_from' id='leave_date_from' required>
+                    </div>
+                    <div class='form-group'>
+                        <label for='leave_date_to'>Leave To:</label>
+                        <input type='date' class='form-control' name='leave_date_to' id='leave_date_to' required>
+                    </div>
+                    <div class='form-group'>
+                        <label for='leave_total_days'>Leave For (Days):</label>
+                        <input type='number' class='form-control' name='leave_total_days' id='leave_total_days' readonly required>
+                    </div>
+                    <div class='form-group form-check mt-4'>
+                        <input type='checkbox' class='form-check-input' name='leave_check' id='leave_check' required>
+                        <label class='form-check-label' for='leave_check'><strong>Make sure submit</strong></label>
+                    </div>
+                    <div class='form-group col-12 mt-4 text-center'>
+                        <button type='submit' class='btn btn-dark btn-lg'>Submit Application</button>
+                    </div>
+                </form>
+            </div>
+            <div class='col-md-8'>
+                <div class='text-center mb-4'>
+                    <h5 style='text-decoration: underline;'>Leave Details (<strong>$row->leave_year</strong>)</h5>
+                </div>
+                <table class='table'>
+                    <thead class='thead-light'>
+                        <tr>
+                            <th class='col-2'>#</th>
+                            <th class='col-2'>Casual Leave</th>
+                            <th class='col-3'>Sick Leave</th>
+                            <th class='col-3'>Maternal Leave</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Total</td>
+                            <td>$row->casual_leave</td>
+                            <td>$row->sick_leave</td>
+                            <td>$row->maternal_leave</td>
+                        </tr>
+                        <tr>
+                            <td>Consumed</td>
+                            <td>$row->casual_consumed</td>
+                            <td>$row->sick_consumed</td>
+                            <td>$row->maternal_consumed</td>
+                        </tr>
+                        <tr>
+                            <td>Remaining</td>
+                            <td>".((int)$row->casual_leave - (int)$row->casual_consumed)."</td>
+                            <td>".((int)$row->sick_leave - (int)$row->sick_consumed)."</td>
+                            <td>".((int)$row->maternal_leave - (int)$row->maternal_consumed)."</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>";
+        }
+    }
+
+    public function add_leave_application() {
+        $this->load->library('session');
+        $this->load->model('Admin_management_model', 'amm');
+        $this->amm->add_leave_application();
+    }
+
+    public function leave_list() {
+        $this->load->library('session');
+        $this->load->model('Employee_management_model', 'emm');
+        $this->load->model('Admin_management_model', 'amm');
+        $this->load->view('super_admin/leave_list');
+    }
+
+    // Leave Application Functionality Ends
 }

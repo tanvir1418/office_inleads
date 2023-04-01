@@ -14,9 +14,9 @@ class Login extends CI_Controller {
 
 
     public function login_process() {
-        $username      = $_POST["username"];
-        $password      = $_POST["password"];
-        $status      = "DISABLE";
+        $username = $_POST["username"];
+        $password = $_POST["password"];
+        $status = "DISABLE";
 
         $qry = "SELECT count(*) as cnt from admin_user where username= '$username'";
         $res = $this->db->query($qry, array($username))->result();

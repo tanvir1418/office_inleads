@@ -32,228 +32,228 @@ class Super_admin extends CI_Controller {
     }
 
     public function employee_list() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Employee_management_model', 'emm');
         $this->load->view('super_admin/employee_list');
     }
 
     public function previous_employees() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Employee_management_model', 'emm');
         $this->load->view('super_admin/previous_employees');
     }
 
     public function employee_profile() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Employee_management_model', 'emm');
         $this->load->model('Admin_management_model', 'amm');
         $this->load->view('super_admin/employee_profile');
     }
 
     public function employee_full_details() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Employee_management_model', 'emm');
         $this->load->view('super_admin/employee_full_details');
     }
 
     public function add_employee() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Employee_management_model', 'emm');
         $this->load->model('Category_management_model', 'cmm');
         $this->load->view('super_admin/add_employee');
     }
 
     public function insert_employee() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->insert_employee();
     }
 
     public function employee_edit_details() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Employee_management_model', 'emm');
         $this->load->model('Category_management_model', 'cmm');
         $this->load->view('super_admin/employee_edit_details');
     }
 
     public function employee_change_status() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Employee_management_model', 'emm');
         $this->load->model('Category_management_model', 'cmm');
         $this->load->view('super_admin/employee_change_status');
     }
 
     public function employee_promotion() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Admin_management_model', 'amm');
         $this->amm->employee_promotion();
     }
 
     public function employee_depart() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Admin_management_model', 'amm');
         $this->amm->employee_depart();
     }
 
     public function update_employee_details() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->update_employee_details();
     }
 
     public function update_personal_details() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->update_personal_details();
     }
 
     public function create_employment_history() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->create_employment_history();
     }
 
     public function update_employment_history() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->update_employment_history();
     }
 
     public function delete_employment_history() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->delete_employment_history();
     }
 
     public function create_academic_qualification() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->create_academic_qualification();
     }
 
     public function update_academic_qualification() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->update_academic_qualification();
     }
 
     public function delete_academic_qualification() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->delete_academic_qualification();
     }
 
     public function create_training_details() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->create_training_details();
     }
 
     public function update_training_details() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->update_training_details();
     }
 
     public function delete_training_details() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->delete_training_details();
     }
 
     public function create_prof_certification() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->create_prof_certification();
     }
 
     public function update_prof_certification() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->update_prof_certification();
     }
 
     public function delete_prof_certification() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->delete_prof_certification();
     }
 
     public function create_emergency_contact() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->create_emergency_contact();
     }
 
     public function update_emergency_contact() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->update_emergency_contact();
     }
 
     public function delete_emergency_contact() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->delete_emergency_contact();
     }
 
     public function create_reference() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->create_reference();
     }
 
     public function update_reference() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->update_reference();
     }
 
     public function delete_reference() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->delete_reference();
     }
 
     public function create_children_details() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->create_children_details();
     }
 
     public function update_children_details() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->update_children_details();
     }
 
     public function delete_children_details() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->delete_children_details();
     }
 
     public function create_society_details() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->create_society_details();
     }
 
     public function update_society_details() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->update_society_details();
     }
 
     public function delete_society_details() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Employee_management_model', 'emm');
         $this->emm->delete_society_details();
     }
 
     // Salary Functions Starts
     public function add_salary() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Category_management_model', 'cmm');
         $this->load->model('Employee_management_model', 'emm');
         $this->load->model('Admin_management_model', 'amm');
@@ -261,19 +261,19 @@ class Super_admin extends CI_Controller {
     }
 
     public function salary_details() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Admin_management_model', 'amm');
         $this->load->view('super_admin/salary_details');
     }
 
     public function insert_salary() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Admin_management_model', 'amm');
         $this->amm->insert_salary();
     }
 
     public function get_employee_salary_data_ajx() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Category_management_model', 'cmm');
         $this->load->model('Employee_management_model', 'emm');
         $this->load->model('Admin_management_model', 'amm');
@@ -452,31 +452,31 @@ class Super_admin extends CI_Controller {
 
     // Department Types Starts
     public function department_list() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Category_management_model', 'cmm');
         $this->load->view('super_admin/department_list');
     }
 
     public function create_new_department() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Category_management_model', 'cmm');
         $this->cmm->create_new_department();
     }
 
     public function active_department() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Category_management_model', 'cmm');
         $this->cmm->active_department();
     }
 
     public function deactive_department() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Category_management_model', 'cmm');
         $this->cmm->deactive_department();
     }
 
     public function edit_modal_department_ajx() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Category_management_model', 'cmm');
         $dept_id = $this->input->post('dept_id');
 
@@ -488,7 +488,7 @@ class Super_admin extends CI_Controller {
     }
 
     public function edit_department() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Category_management_model', 'cmm');
         $this->cmm->edit_department();
     }
@@ -497,31 +497,31 @@ class Super_admin extends CI_Controller {
 
     // Designation Types Starts
     public function designation_list() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Category_management_model', 'cmm');
         $this->load->view('super_admin/designation_list');
     }
 
     public function create_new_designation() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Category_management_model', 'cmm');
         $this->cmm->create_new_designation();
     }
 
     public function active_designation() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Category_management_model', 'cmm');
         $this->cmm->active_designation();
     }
 
     public function deactive_designation() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Category_management_model', 'cmm');
         $this->cmm->deactive_designation();
     }
 
     public function edit_modal_designation_ajx() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Category_management_model', 'cmm');
         $dsgn_id = $this->input->post('dsgn_id');
 
@@ -533,7 +533,7 @@ class Super_admin extends CI_Controller {
     }
 
     public function edit_designation() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Category_management_model', 'cmm');
         $this->cmm->edit_designation();
     }
@@ -541,31 +541,31 @@ class Super_admin extends CI_Controller {
 
     // ID Card Types Starts
     public function idcard_type() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Category_management_model', 'cmm');
         $this->load->view('super_admin/idcard_type');
     }
 
     public function create_new_idcard_type() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Category_management_model', 'cmm');
         $this->cmm->create_new_idcard_type();
     }
 
     public function active_idcard_type() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Category_management_model', 'cmm');
         $this->cmm->active_idcard_type();
     }
 
     public function deactive_idcard_type() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Category_management_model', 'cmm');
         $this->cmm->deactive_idcard_type();
     }
 
     public function edit_modal_idcard_type_ajx() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Category_management_model', 'cmm');
         $idcard_id = $this->input->post('idcard_id');
 
@@ -577,7 +577,7 @@ class Super_admin extends CI_Controller {
     }
 
     public function edit_idcard_type() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Category_management_model', 'cmm');
         $this->cmm->edit_idcard_type();
     }
@@ -586,31 +586,31 @@ class Super_admin extends CI_Controller {
 
     // Employment Type Starts
     public function employment_type() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Category_management_model', 'cmm');
         $this->load->view('super_admin/employment_type');
     }
 
     public function create_new_employment_type() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Category_management_model', 'cmm');
         $this->cmm->create_new_employment_type();
     }
 
     public function active_employment_type() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Category_management_model', 'cmm');
         $this->cmm->active_employment_type();
     }
 
     public function deactive_employment_type() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Category_management_model', 'cmm');
         $this->cmm->deactive_employment_type();
     }
 
     public function edit_modal_employment_type_ajx() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Category_management_model', 'cmm');
         $empl_id = $this->input->post('empl_id');
 
@@ -622,7 +622,7 @@ class Super_admin extends CI_Controller {
     }
 
     public function edit_employment_type() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Category_management_model', 'cmm');
         $this->cmm->edit_employment_type();
     }
@@ -630,31 +630,31 @@ class Super_admin extends CI_Controller {
 
     // Salary Types Functions Starts
     public function salary_type() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Category_management_model', 'cmm');
         $this->load->view('super_admin/salary_type');
     }
 
     public function create_new_salary_type() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Category_management_model', 'cmm');
         $this->cmm->create_new_salary_type();
     }
 
     public function active_salary_type() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Category_management_model', 'cmm');
         $this->cmm->active_salary_type();
     }
 
     public function deactive_salary_type() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Category_management_model', 'cmm');
         $this->cmm->deactive_salary_type();
     }
 
     public function edit_modal_salary_type_ajx() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Category_management_model', 'cmm');
         $slry_type_id = $this->input->post('slry_type_id');
 
@@ -666,7 +666,7 @@ class Super_admin extends CI_Controller {
     }
 
     public function edit_salary_type() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Category_management_model', 'cmm');
         $this->cmm->edit_salary_type();
     }
@@ -674,27 +674,27 @@ class Super_admin extends CI_Controller {
 
     // Leave Application Functionality Starts
     public function leave_application() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Employee_management_model', 'emm');
         $this->load->model('Admin_management_model', 'amm');
         $this->load->view('super_admin/leave_application');
     }
 
     public function manage_paid_leave() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Employee_management_model', 'emm');
         $this->load->model('Admin_management_model', 'amm');
         $this->load->view('super_admin/manage_paid_leave');
     }
 
     public function add_paid_leave() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Admin_management_model', 'amm');
         $this->amm->add_paid_leave();
     }
 
     public function get_employee_leave_data_ajx() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Admin_management_model', 'amm');
 
         $emp_user_id = $this->input->post('emp_user_id');
@@ -793,13 +793,13 @@ class Super_admin extends CI_Controller {
     }
 
     public function add_leave_application() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Admin_management_model', 'amm');
         $this->amm->add_leave_application();
     }
 
     public function leave_list() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Employee_management_model', 'emm');
         $this->load->model('Admin_management_model', 'amm');
         $this->load->view('super_admin/leave_list');
@@ -808,38 +808,38 @@ class Super_admin extends CI_Controller {
 
     // Report Generation Functionality Starts
     public function report_generation() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Admin_management_model', 'amm');
         $this->load->view('super_admin/report_generation');
     }
 
     public function showing_current_month_report() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Admin_management_model', 'amm');
         $this->amm->showing_current_month_report();
     }
 
     public function custom_report_generation() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Admin_management_model', 'amm');
         $this->load->view('super_admin/custom_report_generation');
     }
 
     public function custom_date_range_report() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Admin_management_model', 'amm');
         $this->amm->custom_date_range_report();
     }
     // Report Generation Functionality Ends
 
     public function update_profile() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Admin_management_model', 'amm');
         $this->load->view('super_admin/update_profile');
     }
 
     public function update_admin_data() {
-        $this->load->library('session');
+        $this->session_data();
         $this->load->model('Admin_management_model', 'amm');
         $this->amm->update_admin_data();
     }

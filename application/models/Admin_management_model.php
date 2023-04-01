@@ -3,6 +3,64 @@ ob_start();
 
 class Admin_management_model extends CI_Model {
 
+    public function get_admin_data() {
+        $this->db->where('user_type', "super_admin");
+        $query = $this->db->get("admin_user");
+        return $query->result();
+    }
+
+    function update_admin_data() {
+
+        $this->load->library("form_validation");
+        $this->form_validation->set_rules("full_name", "full_name", "xss_clean");
+        $this->form_validation->set_rules("new_username", "username", "xss_clean");
+        $this->form_validation->set_rules("new_password", "password", "xss_clean");
+
+        if ($this->form_validation->run() == FALSE) {
+            echo  $this->upload->display_errors();
+            $this->load->view('super_admin/update_profile/error');
+        } else {
+
+            $user_id =  $this->session->userdata("user_id");
+            $username = $this->input->post('username');
+            $new_username = $this->input->post('new_username');
+
+            // find out user name
+            if ($username != $new_username) {
+                // find out user name
+                if (!preg_match('/^[A-Za-z0-9\_]+$/', $new_username)) {
+                    redirect("super_admin/update_profile/username_invalid");
+                }
+                $query = "SELECT count(*) as user_count from admin_user where username= '$new_username'";
+                $result = $this->db->query($query)->result();
+
+                if ($result[0]->user_count >= 1) {
+                    redirect("super_admin/update_profile/username_error");
+                }
+            }
+
+            //insert data to database
+            $data_user = array(
+                'full_name'         => $this->input->post('full_name'),
+                'username'         => $this->input->post('new_username'),
+                'password'         => $this->input->post('new_password')
+            );
+
+            $this->db->where('user_id', $user_id);
+            $this->db->update('admin_user', $data_user);
+
+            $this->session->unset_userdata("username");
+            $this->session->unset_userdata("user_type");
+            $this->session->unset_userdata("user_id");
+            $this->session->unset_userdata("status");
+
+            $this->session->sess_destroy();
+            $this->session->set_flashdata('logout_notification', 'logged_out');
+            redirect("super_admin");
+        }
+    }
+
+
     public function get_employee_current_year_salary($emp_user_id) {
         $current_year = date('Y');
         $query = $this->db->query("SELECT * FROM employee_salary WHERE emp_user_id = $emp_user_id AND year = $current_year ORDER BY month_no");
@@ -289,6 +347,12 @@ class Admin_management_model extends CI_Model {
     public function get_leave_application_list() {
         $this->db->order_by("created_at", "DESC");
         $query = $this->db->get("emp_leave_application");
+        return $query->result();
+    }
+
+    public function get_leave_employee_on_current_date() {
+        $current_date = date('Y-m-d');
+        $query = $this->db->query("SELECT * FROM emp_leave_application WHERE leave_date_from <= '$current_date' AND leave_date_to >= '$current_date' ORDER BY created_at DESC");
         return $query->result();
     }
 

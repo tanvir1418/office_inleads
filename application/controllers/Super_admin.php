@@ -26,6 +26,7 @@ class Super_admin extends CI_Controller {
             redirect("login");
         } else {
             $this->load->model('Employee_management_model', 'emm');
+            $this->load->model('Admin_management_model', 'amm');
             $this->load->view('super_admin/index');
         }
     }
@@ -830,4 +831,16 @@ class Super_admin extends CI_Controller {
         $this->amm->custom_date_range_report();
     }
     // Report Generation Functionality Ends
+
+    public function update_profile() {
+        $this->load->library('session');
+        $this->load->model('Admin_management_model', 'amm');
+        $this->load->view('super_admin/update_profile');
+    }
+
+    public function update_admin_data() {
+        $this->load->library('session');
+        $this->load->model('Admin_management_model', 'amm');
+        $this->amm->update_admin_data();
+    }
 }

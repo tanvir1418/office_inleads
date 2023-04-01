@@ -803,6 +803,31 @@ class Super_admin extends CI_Controller {
         $this->load->model('Admin_management_model', 'amm');
         $this->load->view('super_admin/leave_list');
     }
-
     // Leave Application Functionality Ends
+
+    // Report Generation Functionality Starts
+    public function report_generation() {
+        $this->load->library('session');
+        $this->load->model('Admin_management_model', 'amm');
+        $this->load->view('super_admin/report_generation');
+    }
+
+    public function showing_current_month_report() {
+        $this->load->library('session');
+        $this->load->model('Admin_management_model', 'amm');
+        $this->amm->showing_current_month_report();
+    }
+
+    public function custom_report_generation() {
+        $this->load->library('session');
+        $this->load->model('Admin_management_model', 'amm');
+        $this->load->view('super_admin/custom_report_generation');
+    }
+
+    public function custom_date_range_report() {
+        $this->load->library('session');
+        $this->load->model('Admin_management_model', 'amm');
+        $this->amm->custom_date_range_report();
+    }
+    // Report Generation Functionality Ends
 }

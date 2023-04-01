@@ -31,7 +31,7 @@
                                         $employee_name = $this->db->get("employee_info")->row('employee_name');
                                     ?>
                                     <td>
-                                        <a href="<?= base_url() ?>super_admin/employee_profile/<?= $row->emp_user_id ?>" class="btn btn-dark mt-0 tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Show Profile">
+                                        <a href="<?= base_url() ?>super_admin/employee_profile/<?= $row->emp_user_id ?>" class="btn btn-dark mt-0 p-0 px-1 tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Show Profile">
                                             <?= $employee_name ?>
                                         </a>
                                     </td>

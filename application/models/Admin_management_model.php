@@ -146,9 +146,9 @@ class Admin_management_model extends CI_Model {
             echo  $this->upload->display_errors();
         } else {
             $paid_leave_check = $this->input->post('paid_leave_check');
-            
+
             if (isset($paid_leave_check) && $paid_leave_check == 'on') {
-                
+
                 $paid_leave_id = mt_rand(100000, 999999);
 
                 // check leave details exists or not
@@ -177,7 +177,7 @@ class Admin_management_model extends CI_Model {
         }
         redirect("super_admin/manage_paid_leave");
     }
-    
+
     public function get_emp_paid_leave_details() {
         $this->db->order_by("leave_year", "DESC");
         $query = $this->db->get("emp_paid_leave_details");
@@ -207,12 +207,12 @@ class Admin_management_model extends CI_Model {
         } else {
             $leave_check = $this->input->post('leave_check');
             $emp_user_id = $this->input->post('emp_user_id');
-            
+
             if (isset($leave_check) && $leave_check == 'on') {
                 $current_year = date('Y');
                 // emp_paid_leave_details
                 $queryLeave = $this->db->query("SELECT * FROM emp_paid_leave_details WHERE emp_user_id= '$emp_user_id' AND leave_year='$current_year'");
-                
+
                 if ($queryLeave->num_rows() == 1) {
                     $emp_paid_leave_id = "";
                     $input_leave_type = $this->input->post('leave_type');
@@ -222,19 +222,19 @@ class Admin_management_model extends CI_Model {
                     $remained_leave = 0;
 
                     foreach ($queryLeave->result() as $row) {
-                        if($input_leave_type == "casual_leave"){
+                        if ($input_leave_type == "casual_leave") {
                             $emp_paid_leave_id = $row->paid_leave_id;
                             $assigned_leave = $row->casual_leave;
                             $consumed_leave = $row->casual_consumed;
                             $remained_leave = $assigned_leave - $consumed_leave;
                         }
-                        if($input_leave_type == "sick_leave"){
+                        if ($input_leave_type == "sick_leave") {
                             $emp_paid_leave_id = $row->paid_leave_id;
                             $assigned_leave = $row->sick_leave;
                             $consumed_leave = $row->sick_consumed;
                             $remained_leave = $assigned_leave - $consumed_leave;
                         }
-                        if($input_leave_type == "maternal_leave"){
+                        if ($input_leave_type == "maternal_leave") {
                             $emp_paid_leave_id = $row->paid_leave_id;
                             $assigned_leave = $row->maternal_leave;
                             $consumed_leave = $row->maternal_consumed;
@@ -243,7 +243,7 @@ class Admin_management_model extends CI_Model {
                     }
 
                     $leave_appl_id = mt_rand(100000, 999999);
-                    if(($remained_leave - $input_leave_total_days) >= 0 ){
+                    if (($remained_leave - $input_leave_total_days) >= 0) {
                         $data_leave_application = array(
                             'leave_appl_id' => $leave_appl_id,
                             'emp_user_id' => $emp_user_id,
@@ -260,19 +260,17 @@ class Admin_management_model extends CI_Model {
                         // HAVE TO UPDATE THIS SECTION STARTS
                         $data_paid_leave = [];
 
-                        if($input_leave_type == "casual_leave"){
+                        if ($input_leave_type == "casual_leave") {
                             $data_paid_leave = array(
                                 'casual_consumed' => $consumed_leave + $input_leave_total_days,
                                 'updated_at' => date('Y-m-d')
                             );
-                        }
-                        elseif($input_leave_type == "sick_leave"){
+                        } elseif ($input_leave_type == "sick_leave") {
                             $data_paid_leave = array(
                                 'sick_consumed' => $consumed_leave + $input_leave_total_days,
                                 'updated_at' => date('Y-m-d')
                             );
-                        }
-                        else{
+                        } else {
                             $data_paid_leave = array(
                                 'maternal_consumed' => $consumed_leave + $input_leave_total_days,
                                 'updated_at' => date('Y-m-d')
@@ -288,13 +286,13 @@ class Admin_management_model extends CI_Model {
         redirect("super_admin/leave_application");
     }
 
-    public function get_leave_application_list(){
+    public function get_leave_application_list() {
         $this->db->order_by("created_at", "DESC");
         $query = $this->db->get("emp_leave_application");
         return $query->result();
     }
 
-    public function get_employee_leave_application(){
+    public function get_employee_leave_application() {
         $emp_user_id = $this->uri->segment(3);
         $this->db->order_by("created_at", "DESC");
         $this->db->where("emp_user_id", $emp_user_id);
@@ -310,5 +308,23 @@ class Admin_management_model extends CI_Model {
         $this->db->where('leave_year', $current_year);
         $query = $this->db->get("emp_paid_leave_details");
         return $query->result();
+    }
+
+    public function showing_current_month_report() {
+        $first_day_this_month = date('m-01-Y');
+        $last_day_this_month  = date('m-t-Y');
+        $query = $this->db->query("SELECT * FROM employee_salary WHERE created_at BETWEEN '$first_day_this_month' AND '$last_day_this_month' ORDER BY created_at ASC");
+        return $query->result();
+    }
+
+    public function custom_date_range_report() {
+        if (isset($_GET['from_date']) && isset($_GET['to_date'])) {
+            $from_date = $_GET['from_date'];
+            $to_date = $_GET['to_date'];
+            $query = $this->db->query("SELECT * FROM employee_salary WHERE created_at BETWEEN '$from_date' AND '$to_date' ORDER BY created_at ASC");
+            return $query->result();
+        } else {
+            return array();
+        }
     }
 }

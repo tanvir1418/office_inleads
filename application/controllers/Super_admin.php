@@ -316,7 +316,10 @@ class Super_admin extends CI_Controller {
         foreach ($this->amm->get_employee_current_year_salary($emp_user_id) as $row) {
             $this->db->where('month_no', $row->month_no);
             $month_name = $this->db->get("months")->row('month_name');
-            array_push($employee_already_paid_month_no, $row->month_no);
+
+            if($row->salary_status == 'Full Paid'){
+                array_push($employee_already_paid_month_no, $row->month_no);
+            }
 
             $this->db->where('slry_type_id', $row->slry_type_id);
             $slry_type_name = $this->db->get("salary_type_list")->row('slry_type_name');

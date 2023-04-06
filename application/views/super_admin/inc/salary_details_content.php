@@ -13,7 +13,8 @@
                                 <th>Designation</th>
                                 <th>Month</th>
                                 <th>Year</th>
-                                <th>Amount</th>
+                                <th>Salary</th>
+                                <th>Paid</th>
                                 <th>Status</th>
                                 <th>Pay Date</th>
                                 <th>Salary Type</th>
@@ -51,8 +52,9 @@
                                     <td><?= $month_name ?></td>
                                     <td><?= $row->year ?></td>
                                     <td><?= $row->salary_amount ?></td>
+                                    <td><?= $row->salary_paid ?></td>
                                     <td><?= $row->salary_status ?></td>
-                                    <td><?= implode("-", array_reverse(explode("-", $row->pay_date))) ?></td>
+                                    <td><?= implode("-", array_reverse(explode("-", $row->last_pay_date))) ?></td>
                                     <td><?= $slry_type_name ?></td>
                                 </tr>
                             <?php endforeach; ?>

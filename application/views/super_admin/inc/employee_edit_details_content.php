@@ -36,7 +36,7 @@
                                 <small class="text-muted"><?= $designation ?></small>
                                 <br>
                                 <a class="btn btn-dark text-white mt-2" href="<?= base_url() ?>super_admin/employee_profile/<?= $rowEmp->emp_user_id ?>">Profile</a>
-                                <?php if($rowEmp->status == "WORKING"): ?>
+                                <?php if ($rowEmp->status == "WORKING") : ?>
                                     <a class="btn btn-danger text-white mt-2" href="<?= base_url() ?>super_admin/employee_change_status/<?= $rowEmp->emp_user_id ?>">Change Status</a>
                                 <?php endif; ?>
                             <?php endforeach; ?>
@@ -110,6 +110,14 @@
                                                 <option value="<?= $rowEmpl->empl_id ?>" <?= $rowEmpl->empl_id == $rowEmp->empl_id ? 'selected' : '' ?>><?= $rowEmpl->empl_name ?></option>
                                             <?php endforeach; ?>
                                         </select>
+                                    </div>
+                                    <div class="form-group col-6">
+                                        <label for="monthly_salary">Monthly Salary:</label>
+                                        <input type="number" class="form-control" name="monthly_salary" id="monthly_salary" placeholder="Enter monthly salary" value="<?= $rowEmp->monthly_salary ?>" required>
+                                    </div>
+                                    <div class="form-group col-6">
+                                        <label for="bank_account_no">Account No. (DBBL):</label>
+                                        <input type="text" class="form-control" name="bank_account_no" id="bank_account_no" placeholder="Enter bank account no" value="<?= $rowEmp->bank_account_no ?>" required>
                                     </div>
                                     <input type="hidden" name="prev_image" value="<?= $rowEmp->image ?>">
                                     <div class="form-group col-6">
@@ -348,7 +356,7 @@
                                                     <td>
                                                         <a onclick="return confirm('Want to delete this training details ?');" href="<?= base_url() ?>super_admin/delete_training_details/<?= $rowTrain->emp_training_id ?>" class="btn btn-danger mt-0 tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Delete">
                                                             <i class="fas fa-times-circle"></i></a>
-                                                        
+
                                                         <button class="btn btn-primary mt-0 tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Update"><i class="fas fa-check-circle"></i></button>
                                                     </td>
                                                 </form>
@@ -390,7 +398,7 @@
                                                     <td>
                                                         <a onclick="return confirm('Want to delete this training details ?');" href="<?= base_url() ?>super_admin/delete_prof_certification/<?= $rowCert->emp_cerf_id ?>" class="btn btn-danger mt-0 tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Delete">
                                                             <i class="fas fa-times-circle"></i></a>
-                                                        
+
                                                         <button class="btn btn-primary mt-0 tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Update"><i class="fas fa-check-circle"></i></button>
                                                     </td>
                                                 </form>
@@ -430,7 +438,7 @@
                                                     <td>
                                                         <a onclick="return confirm('Want to delete this emergency contact ?');" href="<?= base_url() ?>super_admin/delete_emergency_contact/<?= $rowEmerg->emp_emerg_id ?>" class="btn btn-danger mt-0 tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Delete">
                                                             <i class="fas fa-times-circle"></i></a>
-                                                        
+
                                                         <button class="btn btn-primary mt-0 tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Update"><i class="fas fa-check-circle"></i></button>
                                                     </td>
                                                 </form>
@@ -472,7 +480,7 @@
                                                     <td>
                                                         <a onclick="return confirm('Want to delete this reference ?');" href="<?= base_url() ?>super_admin/delete_reference/<?= $rowRef->emp_ref_id ?>" class="btn btn-danger mt-0 tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Delete">
                                                             <i class="fas fa-times-circle"></i></a>
-                                                        
+
                                                         <button class="btn btn-primary mt-0 tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Update"><i class="fas fa-check-circle"></i></button>
                                                     </td>
                                                 </form>
@@ -510,7 +518,7 @@
                                                     <td>
                                                         <a onclick="return confirm('Want to delete this children details ?');" href="<?= base_url() ?>super_admin/delete_children_details/<?= $rowChild->emp_child_id ?>" class="btn btn-danger mt-0 tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Delete">
                                                             <i class="fas fa-times-circle"></i></a>
-                                                        
+
                                                         <button class="btn btn-primary mt-0 tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Update"><i class="fas fa-check-circle"></i></button>
                                                     </td>
                                                 </form>
@@ -550,7 +558,7 @@
                                                     <td>
                                                         <a onclick="return confirm('Want to delete this society details ?');" href="<?= base_url() ?>super_admin/delete_society_details/<?= $rowSoc->emp_soc_id ?>" class="btn btn-danger mt-0 tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Delete">
                                                             <i class="fas fa-times-circle"></i></a>
-                                                        
+
                                                         <button class="btn btn-primary mt-0 tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Update"><i class="fas fa-check-circle"></i></button>
                                                     </td>
                                                 </form>

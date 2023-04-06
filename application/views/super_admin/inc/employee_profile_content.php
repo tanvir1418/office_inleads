@@ -86,7 +86,7 @@
                     <div class="col-12">
                         <div class="card m-b-30">
                             <div class="card-body">
-                                <h6 class="header-title pb-1">Leave Status <strong>(<?= date('Y')?>)</strong></h6>
+                                <h6 class="header-title pb-1">Leave Status <strong>(<?= date('Y') ?>)</strong></h6>
                                 <?php
                                 $row = $this->amm->get_employee_paid_leave_details_by_segment();
                                 $rowLeaveCount = count($row);
@@ -156,6 +156,8 @@
                                                     $employment_type = $this->db->get("employment_type_list")->row('empl_name');
                                                     ?>
                                                     <li><b>Employment Type:</b> <?= $employment_type ?></li>
+                                                    <li><b>Monthly Salary:</b> <?= $rowEmp2->monthly_salary ?></li>
+                                                    <li><b>Bank Account No:</b> <?= $rowEmp2->bank_account_no ?></li>
                                                     <?php if ($rowEmp2->status == "WORKING") : ?>
                                                         <li><b>Status:</b> <?= $rowEmp2->status ?></li>
                                                     <?php else : ?>
@@ -286,7 +288,8 @@
                                                 <th>#</th>
                                                 <th>Month</th>
                                                 <th>Year</th>
-                                                <th>Amount</th>
+                                                <th>Salary</th>
+                                                <th>Paid</th>
                                                 <th>Status</th>
                                                 <th>Pay Date</th>
                                                 <th>Salary Type</th>
@@ -294,7 +297,7 @@
                                         </thead>
                                         <tbody>
                                             <?php $slry_i = 1;
-                                            foreach ($this->amm->get_employee_current_year_salary_history() as $row) : ?>
+                                            foreach ($this->amm->get_employee_salary_info() as $row) : ?>
                                                 <tr>
                                                     <td><?= $slry_i++ ?></td>
                                                     <?php
@@ -307,8 +310,9 @@
                                                     <td><?= $month_name ?></td>
                                                     <td><?= $row->year ?></td>
                                                     <td><?= $row->salary_amount ?></td>
+                                                    <td><?= $row->salary_paid ?></td>
                                                     <td><?= $row->salary_status ?></td>
-                                                    <td><?= implode(" - ", array_reverse(explode(" - ", $row->pay_date))) ?></td>
+                                                    <td><?= implode("-", array_reverse(explode("-", $row->last_pay_date))) ?></td>
                                                     <td><?= $slry_type_name ?></td>
                                                 </tr>
                                             <?php endforeach; ?>
@@ -331,32 +335,32 @@
                                     <table id="tech-companies-1" class="table table-striped focus-on">
                                         <thead>
                                             <tr>
-                                                <th>#</th>
+                                                <th>Pay Date</th>
                                                 <th>Month</th>
                                                 <th>Year</th>
-                                                <th>Amount</th>
-                                                <th>Status</th>
-                                                <th>Pay Date</th>
+                                                <th>Salary</th>
+                                                <th>Paid</th>
+                                                <th>Pay Amount</th>
                                                 <th>Salary Type</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php $slry_i = 1;
+                                            <?php
                                             foreach ($this->amm->get_employee_salary_history() as $row) : ?>
                                                 <tr>
-                                                    <td><?= $slry_i++ ?></td>
                                                     <?php
-                                                    $this->db->where('month_no', $row->month_no);
-                                                    $month_name = $this->db->get("months")->row('month_name');
+                                                        $this->db->where('month_no', $row->month_no);
+                                                        $month_name = $this->db->get("months")->row('month_name');
 
-                                                    $this->db->where('slry_type_id', $row->slry_type_id);
-                                                    $slry_type_name = $this->db->get("salary_type_list")->row('slry_type_name');
+                                                        $this->db->where('slry_type_id', $row->slry_type_id);
+                                                        $slry_type_name = $this->db->get("salary_type_list")->row('slry_type_name');
                                                     ?>
+                                                    <td><?= implode("-", array_reverse(explode("-", $row->pay_date))) ?></td>
                                                     <td><?= $month_name ?></td>
                                                     <td><?= $row->year ?></td>
                                                     <td><?= $row->salary_amount ?></td>
-                                                    <td><?= $row->salary_status ?></td>
-                                                    <td><?= implode(" - ", array_reverse(explode(" - ", $row->pay_date))) ?></td>
+                                                    <td><?= $row->salary_paid ?></td>
+                                                    <td><?= $row->paid_amount ?></td>
                                                     <td><?= $slry_type_name ?></td>
                                                 </tr>
                                             <?php endforeach; ?>

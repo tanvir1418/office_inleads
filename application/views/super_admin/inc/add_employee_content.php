@@ -71,6 +71,14 @@
                         </select>
                     </div>
                     <div class="form-group col-6">
+                        <label for="monthly_salary">Monthly Salary:</label>
+                        <input type="number" class="form-control" name="monthly_salary" id="monthly_salary" placeholder="Enter monthly salary" required>
+                    </div>
+                    <div class="form-group col-6">
+                        <label for="bank_account_no">Account No. (DBBL):</label>
+                        <input type="text" class="form-control" name="bank_account_no" id="bank_account_no" placeholder="Enter bank account no" required>
+                    </div>
+                    <div class="form-group col-6">
                         <label for="employee_image">Employee Image:</label>
                         <input type="file" class="form-control" name="image" id="employee_image" required>
                     </div>

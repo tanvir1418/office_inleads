@@ -264,22 +264,6 @@ $(document).ready(function() {
         });
     });
 
-    // Employee salary payment ajax request
-    $("#select_emp_userid").on('change', function() {
-        var emp_user_id = this.value;
-        $.ajax({
-            url: `${base_url}super_admin/get_employee_salary_data_ajx`,
-            type: "POST",
-            data: {
-                emp_user_id: emp_user_id
-            },
-            cache: false,
-            success: function(result) {
-                $("#dynamic_employee_data").html(result);
-            }
-        });
-    });
-
     // Employee Leave Management ajax request
     $("#leave_emp_userid").on('change', function() {
         let emp_user_id = this.value;

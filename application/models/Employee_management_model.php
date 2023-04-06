@@ -15,7 +15,10 @@ class Employee_management_model  extends CI_Model {
         $this->form_validation->set_rules("dept_id", "dept_id", "xss_clean");
         $this->form_validation->set_rules("location", "location", "xss_clean");
         $this->form_validation->set_rules("empl_id", "empl_id", "xss_clean");
+        $this->form_validation->set_rules("monthly_salary", "monthly_salary", "xss_clean");
+        $this->form_validation->set_rules("bank_account_no", "bank_account_no", "xss_clean");
         $this->form_validation->set_rules("image", "image", "xss_clean");
+
         $this->form_validation->set_rules("father_name", "father_name", "xss_clean");
         $this->form_validation->set_rules("mother_name", "mother_name", "xss_clean");
         $this->form_validation->set_rules("date_of_birth", "date_of_birth", "xss_clean");
@@ -115,6 +118,8 @@ class Employee_management_model  extends CI_Model {
                 'dept_id' => $this->input->post('dept_id'),
                 'location' => $this->input->post('location'),
                 'empl_id' => $this->input->post('empl_id'),
+                'monthly_salary' => $this->input->post('monthly_salary'),
+                'bank_account_no' => $this->input->post('bank_account_no'),
                 'image' => $image,
                 'status' => 'WORKING',
                 'created_at' => date('Y-m-d'),
@@ -467,6 +472,8 @@ class Employee_management_model  extends CI_Model {
         $this->form_validation->set_rules("dept_id", "dept_id", "xss_clean");
         $this->form_validation->set_rules("location", "location", "xss_clean");
         $this->form_validation->set_rules("empl_id", "empl_id", "xss_clean");
+        $this->form_validation->set_rules("monthly_salary", "monthly_salary", "xss_clean");
+        $this->form_validation->set_rules("bank_account_no", "bank_account_no", "xss_clean");
         $this->form_validation->set_rules("image", "image", "xss_clean");
 
         $emp_user_id = $this->input->post('emp_user_id');
@@ -506,6 +513,8 @@ class Employee_management_model  extends CI_Model {
                 'dept_id' => $this->input->post('dept_id'),
                 'location' => $this->input->post('location'),
                 'empl_id' => $this->input->post('empl_id'),
+                'monthly_salary' => $this->input->post('monthly_salary'),
+                'bank_account_no' => $this->input->post('bank_account_no'),
                 'image' => $image,
                 'status' => 'WORKING',
                 'created_at' => date('Y-m-d'),

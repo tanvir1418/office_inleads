@@ -212,6 +212,7 @@ class Admin_management_model extends CI_Model {
         $this->form_validation->set_rules("start_date", "start_date", "xss_clean");
         $this->form_validation->set_rules("end_date", "end_date", "xss_clean");
         $this->form_validation->set_rules("new_dsgn_id", "new_dsgn_id", "xss_clean");
+        $this->form_validation->set_rules("new_monthly_salary", "new_monthly_salary", "xss_clean");
         $this->form_validation->set_rules("new_appointed_date", "new_appointed_date", "xss_clean");
         $this->form_validation->set_rules("promotion_check", "promotion_check", "xss_clean");
 
@@ -236,6 +237,7 @@ class Admin_management_model extends CI_Model {
 
                 $data_employee = array(
                     'dsgn_id' => $this->input->post('new_dsgn_id'),
+                    'monthly_salary' => $this->input->post('new_monthly_salary'),
                     'appointed_date' => $this->input->post('new_appointed_date'),
                     'updated_at' => date('Y-m-d')
                 );

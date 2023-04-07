@@ -31,7 +31,7 @@
                 <li class="has_sub">
                     <a href="javascript:void(0);" class="waves-effect"><i class="fas fa-money-bill"></i><span>Salary</span><span class="float-right"><i class="mdi mdi-chevron-right"></i></span> </a>
                     <ul class="list-unstyled">
-                        <li><a href="<?= base_url() ?>super_admin/all_employee_salary"><i class="fas fa-wallet"></i>All Employee Salary</a></li>
+                        <li><a href="<?= base_url() ?>super_admin/add_employee_salary"><i class="fas fa-wallet"></i>Add Emp. Salary</a></li>
                         <li><a href="<?= base_url() ?>super_admin/salary_details"><i class="fas fa-receipt"></i></i>Salary Details</a></li>
                     </ul>
                 </li>

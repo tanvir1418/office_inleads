@@ -258,12 +258,12 @@ class Super_admin extends CI_Controller {
         $this->load->view('super_admin/salary_details');
     }
 
-    public function all_employee_salary() {
+    public function add_employee_salary() {
         $this->session_data();
         $this->load->model('Category_management_model', 'cmm');
         $this->load->model('Employee_management_model', 'emm');
         $this->load->model('Admin_management_model', 'amm');
-        $this->load->view('super_admin/all_employee_salary');
+        $this->load->view('super_admin/add_employee_salary');
     }
 
     public function insert_single_employee_salary() {

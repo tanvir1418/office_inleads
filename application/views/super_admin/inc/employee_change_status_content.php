@@ -30,6 +30,8 @@ $organization = 'Inleads IT Solution Ltd.';
                             $designation = $this->db->get("designation_list")->row('dsgn_name');
                             $emp_designation = $designation;
 
+                            $monthly_salary = $row->monthly_salary;
+
                             $this->db->where('dept_id', $row->dept_id);
                             $department = $this->db->get("department_list")->row('dept_name');
 
@@ -73,13 +75,17 @@ $organization = 'Inleads IT Solution Ltd.';
                     <form action="<?= base_url() ?>super_admin/employee_promotion" method='post' enctype='multipart/form-data'>
                         <input type='hidden' name='emp_user_id' value='<?= $emp_user_id ?>'>
                         <div class='form-row'>
-                            <div class='form-group col'>
+                            <div class='form-group col-4'>
                                 <label for='organization'>Organization</label>
                                 <input type='text' class='form-control' name='organization' value="<?= $organization ?>" readonly>
                             </div>
-                            <div class='form-group col'>
+                            <div class='form-group col-4'>
                                 <label for='designation'>Current Designation</label>
                                 <input type='text' class='form-control' name='designation' id="designation" value="<?= $emp_designation ?>" readonly>
+                            </div>
+                            <div class='form-group col-4'>
+                                <label for='monthly_salary'>Current Salary</label>
+                                <input type='number' class='form-control' name='monthly_salary' id="monthly_salary" value="<?= $monthly_salary ?>" readonly>
                             </div>
                             <div class='form-group col'>
                                 <label for='start_date'>Start Date</label>
@@ -92,7 +98,7 @@ $organization = 'Inleads IT Solution Ltd.';
                         </div>
                         <hr>
                         <div class='form-row'>
-                            <div class='form-group col'>
+                            <div class='form-group col-6'>
                                 <label for='new_dsgn_id'>New Designation</label>
                                 <select class='form-control' name='new_dsgn_id' id='new_dsgn_id' required>
                                     <option value='' selected='' disabled='' hidden=''>Choose here</option>
@@ -103,7 +109,11 @@ $organization = 'Inleads IT Solution Ltd.';
                                     <?php endforeach; ?>
                                 </select>
                             </div>
-                            <div class='form-group col'>
+                            <div class='form-group col-6'>
+                                <label for='new_monthly_salary'>New Salary</label>
+                                <input type='number' class='form-control' name='new_monthly_salary' min="<?= $monthly_salary ?>" id='new_monthly_salary' required>
+                            </div>
+                            <div class='form-group col-6'>
                                 <label for='new_appointed_date'>Appoint Date</label>
                                 <input type='date' class='form-control' name='new_appointed_date' id='new_appointed_date' required>
                             </div>

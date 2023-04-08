@@ -358,6 +358,11 @@ class Employee_management_model  extends CI_Model {
         redirect("super_admin/employee_list");
     }
 
+    function get_all_employees() {
+        $query = $this->db->get("employee_info");
+        return $query->result();
+    }
+
     function get_working_employees() {
         $this->db->order_by("idcard_id", "DESC");
         $this->db->where("status", "WORKING");

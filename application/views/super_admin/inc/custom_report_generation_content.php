@@ -12,11 +12,11 @@
                                 <div class="row">
                                     <div class="form-group col-6">
                                         <label for="report_from_date">Date From:</label>
-                                        <input type="date" class="form-control" name="report_from_date" id="report_from_date" required>
+                                        <input type="date" class="form-control" name="from_date" id="report_from_date" required>
                                     </div>
                                     <div class="form-group col-6">
                                         <label for="report_to_date">Date To:</label>
-                                        <input type="date" class="form-control" name="report_to_date" id="report_to_date" required>
+                                        <input type="date" class="form-control" name="to_date" id="report_to_date" required>
                                     </div>
                                     <div class="form-group col-12 text-right">
                                         <button type="submit" class="btn btn-dark btn-lg">Submit</button>

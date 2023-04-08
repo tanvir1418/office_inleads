@@ -99,6 +99,14 @@ class Admin_management_model extends CI_Model {
         return $query->result();
     }
 
+    public function get_employee_custom_salary_data($emp_user_id, $month_no, $year) {
+        $this->db->where('emp_user_id', $emp_user_id);
+        $this->db->where('month_no', $month_no);
+        $this->db->where('year', $year);
+        $query = $this->db->get("employee_salary");
+        return $query->result();
+    }
+
     public function insert_single_employee_salary() {
 
         $this->load->library("form_validation");

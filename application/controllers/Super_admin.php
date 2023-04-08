@@ -266,6 +266,14 @@ class Super_admin extends CI_Controller {
         $this->load->view('super_admin/add_employee_salary');
     }
 
+    public function employee_salary_status() {
+        $this->session_data();
+        $this->load->model('Category_management_model', 'cmm');
+        $this->load->model('Employee_management_model', 'emm');
+        $this->load->model('Admin_management_model', 'amm');
+        $this->load->view('super_admin/employee_salary_status');
+    }
+
     public function insert_single_employee_salary() {
         $this->session_data();
         $this->load->model('Category_management_model', 'cmm');
@@ -273,7 +281,7 @@ class Super_admin extends CI_Controller {
         $this->load->model('Admin_management_model', 'amm');
 
         $this->amm->insert_single_employee_salary();
-    }  
+    }
 
 
     // Salary Functions Ends
@@ -531,14 +539,14 @@ class Super_admin extends CI_Controller {
         $employee_name = $this->db->get("employee_info")->row('employee_name');
         $employee_id = $this->db->get("employee_info")->row('employee_id');
         $idcard_id = $this->db->get("employee_info")->row('idcard_id');
-        
+
         $this->db->where('idcard_id', $idcard_id);
         $idcard_name = $this->db->get("idcard_type_list")->row('idcard_name');
 
         $employee_id_card = $idcard_name.'-'.$employee_id;
 
         foreach ($this->amm->get_single_emp_paid_leave_details($emp_user_id) as $row) {
-            
+
             echo "<div class='row mt-4'>
             <div class='col-md-4'>
                 <div class='text-center mb-4'>

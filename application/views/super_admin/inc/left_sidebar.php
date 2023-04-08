@@ -44,13 +44,13 @@
                     </ul>
                 </li>
                 
-                <li class="has_sub">
+                <!-- <li class="has_sub">
                     <a href="javascript:void(0);" class="waves-effect"><i class="fas fa-university"></i><span>Bank Details</span><span class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
                     <ul class="list-unstyled">
-                        <li><a href="<?= base_url() ?>super_admin/add_deposit"><i class="fas fa-hand-holding-usd"></i>Add Deposit</a></li>
-                        <li><a href="<?= base_url() ?>super_admin/deposit_list"><i class="fas fa-file-alt"></i>Deposit List</a></li>
+                        <li><a href="<?php // base_url() ?>super_admin/add_deposit"><i class="fas fa-hand-holding-usd"></i>Add Deposit</a></li>
+                        <li><a href="<?php // base_url() ?>super_admin/deposit_list"><i class="fas fa-file-alt"></i>Deposit List</a></li>
                     </ul>
-                </li>
+                </li> -->
                 <li>
                     <a href="<?= base_url() ?>super_admin/report_generation" class="waves-effect"><i class="fas fa-chart-area"></i><span>Report Generation</span> <span class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
                 </li>

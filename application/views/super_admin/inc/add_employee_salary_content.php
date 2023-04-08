@@ -3,6 +3,33 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
+                    <form action="<?= base_url() ?>super_admin/employee_salary_status" method="GET" enctype="multipart/form-data">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="mb-4">
+                                    <h5>Employee Salary Status</h5>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-4">
+                                        <select class="form-control" name="month_no" id="month_no" required>
+                                            <option value="" selected="" disabled="" hidden="">Choose here</option>
+                                            <?php foreach ($this->amm->get_months_list() as $row) : ?>
+                                                <option value="<?= $row->month_no ?>"><?= $row->month_name ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group col-4"> 
+                                        <input type="number" class="form-control" min="2000" max="2100" name="year" id="year" placeholder="Enter year" required>
+                                    </div>
+                                    <div class="form-group col-4">
+                                        <button type="submit" class="btn btn-dark btn-lg">Submit</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
                     <h4 class="mt-0 header-title">All Employee Salary (Current Month: <strong><?= date('F') ?></strong>)</h4>
 
                     <table class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
@@ -104,7 +131,7 @@
                                                         ?>
                                                             <option value="<?php // $row->slry_type_id 
                                                                             ?>" selected><?php // $row->slry_type_name 
-                                                                                                                    ?></option>;
+                                                                                            ?></option>;
                                                         <?php //} 
                                                         ?>
                                                     <?php //endforeach 

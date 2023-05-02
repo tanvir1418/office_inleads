@@ -15,6 +15,7 @@
                                 <th>Department</th>
                                 <th>Id Card</th>
                                 <th>Joining</th>
+                                <th><strong class="text-danger">Departed On</strong></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -46,6 +47,7 @@
                                     ?>
                                     <td><?= $pre_idcard ?>-<?= $row->employee_id ?></td>
                                     <td><?= implode("-", array_reverse(explode("-", $row->date_of_joining))) ?></td>
+                                    <td><strong class="text-danger"><?= implode("-", array_reverse(explode("-", $row->updated_at))) ?></strong></td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>

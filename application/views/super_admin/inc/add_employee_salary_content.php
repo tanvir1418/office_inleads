@@ -42,6 +42,7 @@
                                 <th>Year</th>
                                 <th>Salary</th>
                                 <th>Paid</th>
+                                <th>Due</th>
                                 <th>Salary Type</th>
                                 <th>Pay</th>
                                 <th>Actions</th>
@@ -116,6 +117,7 @@
                                         </td>
                                         <td><input type="number" class='form-control' name="salary_amount" value="<?= $salary_amount ?>" readonly></td>
                                         <td><input type="number" class="form-control" name="salary_paid" value="<?= $salary_paid ?>" readonly /></td>
+                                        <td><input type="number" class="form-control" value="<?= $salary_amount - $salary_paid ?>" readonly /></td>
                                         <td class="text-center">
                                             <?php if ($slry_type_id != "") { ?>
                                                 <?php foreach ($this->cmm->get_active_salary_type_list() as $row) : ?>

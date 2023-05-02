@@ -93,9 +93,30 @@
                                 ?>
                                 <?php if ($rowLeaveCount == 1) : ?>
                                     <ul class="list-unstyled mb-0">
-                                        <li class=""><strong>Casual:</strong> <?= $row[0]->casual_leave ?> (Cons: <?= $row[0]->casual_consumed ?>)</li>
-                                        <li class="mt-2"><strong>Sick:</strong> <?= $row[0]->sick_leave ?> (Cons: <?= $row[0]->sick_consumed ?>)</li>
-                                        <li class="mt-2"><strong>Maternal:</strong> <?= $row[0]->maternal_leave ?> (Cons: <?= $row[0]->maternal_consumed ?>)</li>
+                                        <li class=""><strong>Casual:</strong>
+                                            <?= $row[0]->casual_leave ?>
+                                            <?php if (($row[0]->casual_leave - $row[0]->casual_consumed) <= 2) : ?>
+                                                <strong class="text-danger">(Remaining: <?= $row[0]->casual_leave - $row[0]->casual_consumed ?>)</strong>
+                                            <?php else : ?>
+                                                (Remaining: <?= $row[0]->casual_leave - $row[0]->casual_consumed ?>)
+                                            <?php endif ?>
+                                        </li>
+                                        <li class="mt-2"><strong>Sick:</strong>
+                                            <?= $row[0]->sick_leave ?>
+                                            <?php if (($row[0]->sick_leave - $row[0]->sick_consumed) <= 2) : ?>
+                                                <strong class="text-danger">(Remaining: <?= $row[0]->sick_leave - $row[0]->sick_consumed ?>)</strong>
+                                            <?php else : ?>
+                                                (Remaining: <?= $row[0]->sick_leave - $row[0]->sick_consumed ?>)
+                                            <?php endif ?>
+                                        </li>
+                                        <li class="mt-2"><strong>Maternal:</strong>
+                                            <?= $row[0]->maternal_leave ?>
+                                            <?php if (($row[0]->sick_leave - $row[0]->sick_consumed) <= 2) : ?>
+                                                <strong class="text-danger">(Remaining: <?= $row[0]->maternal_leave - $row[0]->maternal_consumed ?>)</strong>
+                                            <?php else : ?>
+                                                (Remaining: <?= $row[0]->maternal_leave - $row[0]->maternal_consumed ?>)
+                                            <?php endif ?>
+                                        </li>
                                     </ul>
                                 <?php endif; ?>
                             </div>
